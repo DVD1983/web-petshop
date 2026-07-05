@@ -1,0 +1,37 @@
+---
+const { id } = Astro.props;
+---
+
+<section id={id} class="py-[70px] px-5 bg-gradient-to-b from-primary-50 to-purple-50 max-md:py-12 max-md:px-4">
+  <div class="max-w-[1200px] mx-auto px-5">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+      Galería
+    </h2>
+    <div class="relative max-w-[800px] mx-auto overflow-hidden rounded-xl shadow-lg" id="carouselContainer">
+      <div class="flex transition-transform duration-500 ease-in-out" id="carouselTrack">
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=450&fit=crop" alt="Perro feliz" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&h=450&fit=crop" alt="Gato acurrucado" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=450&fit=crop" alt="Cachorro" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1534351450181-ea9f78427fe8?w=800&h=450&fit=crop" alt="Gato mirando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1583336663277-620dc1996580?w=800&h=450&fit=crop" alt="Perro jugando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+      </div>
+      <button class="absolute top-1/2 -translate-y-1/2 left-3 bg-white/80 border-none w-11 h-11 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-colors hover:bg-white" id="prevBtn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="absolute top-1/2 -translate-y-1/2 right-3 bg-white/80 border-none w-11 h-11 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-colors hover:bg-white" id="nextBtn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="flex justify-center gap-2.5 mt-4" id="carouselDots"></div>
+  </div>
+</section>

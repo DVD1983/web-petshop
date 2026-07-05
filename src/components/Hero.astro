@@ -1,0 +1,40 @@
+---
+const { id } = Astro.props;
+---
+
+<section
+  id={id}
+  class="mt-[86px] bg-gradient-to-br from-primary-50 via-primary-300 to-primary-400 via-70% to-accent-200 text-white text-center px-5 py-[110px] relative overflow-hidden max-md:mt-[66px] max-md:py-20 max-md:px-4"
+>
+  <div
+    class="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1)_0%,transparent_60%)] animate-[heroGlow_6s_ease-in-out_infinite_alternate] pointer-events-none"
+  ></div>
+  <span class="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden max-md:hidden">
+    <span class="font-logo text-[clamp(8rem,30vw,20rem)] font-medium text-white/[0.04] -rotate-6">
+      MILO
+    </span>
+  </span>
+  <div class="max-w-[1200px] mx-auto px-5 relative">
+    <h1
+      class="font-logo text-8xl font-medium uppercase bg-gradient-to-r from-white to-primary-50 bg-clip-text text-transparent max-md:text-5xl max-md:text-4xl"
+    >
+      MILO
+    </h1>
+    <p class="font-body text-2xl mt-4 font-semibold opacity-95 max-md:text-lg">
+      Todo lo que tu mascota necesita, con el amor que se merece
+    </p>
+    <a
+      href="#productos"
+      class="inline-block mt-8 px-12 py-4 bg-white text-primary-500 font-body font-bold text-base rounded-[50px] shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
+      Ver productos
+    </a>
+  </div>
+</section>
+
+<style>
+  @keyframes heroGlow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(5%, 5%); }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+const { id } = Astro.props;
+
+interface Product {
+  icon?: string;
+  image?: string;
+  title: string;
+  description: string;
+}
+
+const products: Product[] = [
+  { image: '/images/milo-alimentos.jpg', title: 'Alimentos', description: 'Balanceados y comida húmeda para perros y gatos de todas las edades.' },
+  { image: '/images/cachorro-jugando.avif', title: 'Juguetes', description: 'Pelotas, mordedores y juegos interactivos para horas de diversión.' },
+  { image: '/images/accesorios.jpg', title: 'Accesorios', description: 'Correas, collares, camas y todo para la comodidad de tu mascota.' },
+  { image: '/images/higiene.png', title: 'Higiene', description: 'Shampoos, cepillos, perfumes y productos de limpieza especializados.' },
+  { image: '/images/cama.avif', title: 'Camas', description: 'Cómodas camas y mantas para que duerman como reyes.' },
+  { image: '/images/snacks.jpg', title: 'Snacks', description: 'Premios y golosinas saludables para consentirlos todos los días.' },
+];
+
+const gradients = [
+  'linear-gradient(135deg, #E1F5FE, #B3E5FC)',
+  'linear-gradient(135deg, #FCE4EC, #F8BBD0)',
+  'linear-gradient(135deg, #F3E5F5, #E1BEE7)',
+  'linear-gradient(135deg, #E0F7FA, #B2EBF2)',
+  'linear-gradient(135deg, #FFF8E1, #FFECB3)',
+  'linear-gradient(135deg, #E8F5E9, #C8E6C9)',
+];
+---
+
+<section id={id} class="py-[70px] px-5 bg-white max-md:py-12 max-md:px-4">
+  <div class="max-w-[1200px] mx-auto px-5">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+      Nuestros Productos
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:grid-cols-1 max-md:grid-cols-2">
+      {products.map((product, index) => {
+        return (
+          <div
+            class="rounded-xl px-5 py-8 text-center shadow-sm transition-all duration-400 hover:-translate-y-2 hover:shadow-md relative overflow-hidden"
+            style={`background: ${gradients[index]}`}
+          >
+            {product.image ? (
+              <img src={product.image} alt={product.title} class="block w-40 h-40 object-cover rounded-2xl mx-auto mb-4 relative z-10" />
+            ) : (
+              <iconify-icon icon={product.icon} width="56" height="56" class="text-primary-500 mb-4 relative z-10" inline></iconify-icon>
+            )}
+            <h3 class="font-body text-xl font-bold text-gray-800 mb-2 relative z-10">{product.title}</h3>
+            <p class="font-body text-sm text-gray-500 leading-relaxed font-medium relative z-10">{product.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

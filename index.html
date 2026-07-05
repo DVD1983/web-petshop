@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILO - Pet Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: #444;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      z-index: 1000;
+      padding: 8px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .navbar .logo img {
+      height: 90px;
+      width: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4FC3F7;
+      box-shadow: 0 4px 12px rgba(79, 195, 247, 0.3);
+    }
+
+    .navbar .logo span {
+      font-size: 2.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #4FC3F7, #0288D1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #666;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #4FC3F7;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #0288D1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #0288D1;
+      cursor: pointer;
+    }
+
+    /* === HERO === */
+    .hero {
+      margin-top: 86px;
+      background: linear-gradient(135deg, #B3E5FC 0%, #4FC3F7 40%, #29B6F6 70%, #E1BEE7 100%);
+      color: #fff;
+      text-align: center;
+      padding: 110px 20px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: heroGlow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroGlow {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(5%, 5%); }
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+      position: relative;
+      background: linear-gradient(135deg, #fff, #E1F5FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.4rem;
+      margin-top: 16px;
+      font-weight: 600;
+      opacity: 0.95;
+      position: relative;
+    }
+
+    .hero .btn-hero {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 16px 48px;
+      background: #fff;
+      color: #0288D1;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      position: relative;
+    }
+
+    .hero .btn-hero:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    /* === SECCIONES GENERALES === */
+    section {
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #0288D1;
+      margin-bottom: 40px;
+      position: relative;
+      letter-spacing: 1px;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, #F8BBD0, #4FC3F7, #E1BEE7);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* === SOBRE NOSOTROS === */
+    .about {
+      background: linear-gradient(180deg, #FCE4EC 0%, #E1F5FE 100%);
+    }
+
+    .about p {
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* === PRODUCTOS === */
+    .products {
+      background: #fff;
+    }
+
+    .product-card {
+      border-radius: 20px;
+      padding: 34px 22px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      transition: transform 0.4s, box-shadow 0.4s;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.5;
+      z-index: 0;
+      border-radius: 20px;
+    }
+
+    .product-card:nth-child(1) { background: linear-gradient(135deg, #E1F5FE, #B3E5FC); }
+    .product-card:nth-child(2) { background: linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+    .product-card:nth-child(3) { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+    .product-card:nth-child(4) { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
+    .product-card:nth-child(5) { background: linear-gradient(135deg, #FFF8E1, #FFECB3); }
+    .product-card:nth-child(6) { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+
+    .product-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card i {
+      font-size: 3rem;
+      color: #0288D1;
+      margin-bottom: 18px;
+    }
+
+    .product-card h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* === GALERIA (CARRUSEL) === */
+    .gallery {
+      background: linear-gradient(180deg, #E1F5FE 0%, #F3E5F5 100%);
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.8);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      color: #0288D1;
+      cursor: pointer;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: #fff;
+    }
+
+    .carousel-btn.prev {
+      left: 12px;
+    }
+
+    .carousel-btn.next {
+      right: 12px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .carousel-dots button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: #B3E5FC;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .carousel-dots button.active {
+      background: #0288D1;
+      transform: scale(1.3);
+    }
+
+    /* === CONTACTO === */
+    .contact {
+      background: linear-gradient(180deg, #FFF8E1 0%, #fff 100%);
+      text-align: center;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 42px;
+      border-radius: 60px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .contact-btn.instagram {
+      background: linear-gradient(135deg, #F8BBD0, #E1306C, #833AB4);
+    }
+
+    .contact-btn.whatsapp {
+      background: linear-gradient(135deg, #81C784, #25D366);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: linear-gradient(135deg, #4FC3F7, #E1BEE7);
+      color: #fff;
+      text-align: center;
+      padding: 28px 20px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .footer span {
+      font-weight: 700;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 6px 16px;
+      }
+
+      .navbar .logo img {
+        height: 68px;
+        width: 68px;
+      }
+
+      .navbar .logo span {
+        font-size: 1.6rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        gap: 16px;
+        text-align: center;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        margin-top: 66px;
+        padding: 80px 16px 60px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        letter-spacing: 4px;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .carousel-slide img {
+        height: 280px;
+      }
+
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
+      section {
+        padding: 50px 16px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+      }
+
+      .hero {
+        padding: 70px 16px 50px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel-slide img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="watermarked_img_15087738268608414710.jpg" alt="MILO Logo">
+      <span>MILO</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <h1>MILO</h1>
+      <p>Todo lo que tu mascota necesita, con el amor que se merece</p>
+      <a href="#productos" class="btn-hero">Ver productos</a>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <h2 class="section-title">Sobre Nosotros</h2>
+      <p>
+        En <strong>MILO</strong> amamos a las mascotas tanto como vos. Somos un pet shop dedicado a ofrecer productos de calidad para el bienestar y la felicidad de tus compañeros de vida. Trabajamos con las mejores marcas y brindamos atención personalizada porque sabemos que tu mascota es parte de la familia.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="products" id="productos">
+    <div class="container">
+      <h2 class="section-title">Nuestros Productos</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <i class="fas fa-dog"></i>
+          <h3>Alimentos</h3>
+          <p>Balanceados y comida húmeda para perros y gatos de todas las edades.</p>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-baseball-ball"></i>
+          <h3>Juguetes</h3>
+          <p>Pelotas, mordedores y juegos interactivos para horas de diversión.</p>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-tshirt"></i>
+          <h3>Accesorios</h3>
+          <p>Correas, collares, camas y todo para la comodidad de tu mascota.</p>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-hand-sparkles"></i>
+          <h3>Higiene</h3>
+          <p>Shampoos, cepillos, perfumes y productos de limpieza especializados.</p>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-bed"></i>
+          <h3>Camas</h3>
+          <p>Cómodas camas y mantas para que duerman como reyes.</p>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-bone"></i>
+          <h3>Snacks</h3>
+          <p>Premios y golosinas saludables para consentirlos todos los días.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA / CARRUSEL -->
+  <section class="gallery" id="galeria">
+    <div class="container">
+      <h2 class="section-title">Galería</h2>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=450&fit=crop" alt="Perro feliz">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&h=450&fit=crop" alt="Gato acurrucado">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1543859393-07b4f6f96e9f?w=800&h=450&fit=crop" alt="Cachorro">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1534351450181-ea9f78427fe8?w=800&h=450&fit=crop" alt="Gato mirando">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1583336663277-620dc1996580?w=800&h=450&fit=crop" alt="Perro jugando">
+          </div>
+        </div>
+        <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <h2 class="section-title">Contacto</h2>
+      <p style="margin-bottom: 30px; color: #777;">Seguinos en redes o escribinos por WhatsApp</p>
+      <div class="contact-buttons">
+        <a href="https://instagram.com/milo.petshop" target="_blank" class="contact-btn instagram">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://wa.me/541123456789" target="_blank" class="contact-btn whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 <span>MILO Pet Shop</span>. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // === MENU HAMBURGUESA ===
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // === CARRUSEL ===
+    const track = document.getElementById('carouselTrack');
+    const slides = Array.from(track.children);
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    function goToSlide(index) {
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach(d => d.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      goToSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      goToSlide(currentIndex);
+    }
+
+    nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 3000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    const carousel = document.querySelector('.carousel-container');
+    carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    carousel.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+  </script>
+
+</body>
+</html>

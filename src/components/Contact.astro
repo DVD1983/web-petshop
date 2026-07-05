@@ -1,0 +1,29 @@
+---
+const { id } = Astro.props;
+---
+
+<section id={id} class="py-[70px] px-5 bg-gradient-to-b from-yellow-50 to-white text-center max-md:py-12 max-md:px-4">
+  <div class="max-w-[1200px] mx-auto px-5">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+      Contacto
+    </h2>
+    <p class="mb-4 text-gray-500">Seguinos en redes o escribinos por WhatsApp</p>
+    <p class="mb-8 text-gray-700 font-medium">📍 Calle 844, 2344, Solano</p>
+    <div class="flex justify-center gap-8 flex-wrap max-md:flex-col max-md:items-center">
+      <a
+        href="https://www.instagram.com/milo.solano.petshop"
+        target="_blank"
+        class="inline-flex items-center gap-3.5 px-10 py-4.5 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-accent-100 via-pink-500 to-purple-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center"
+      >
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a
+        href="https://wa.me/541123456789"
+        target="_blank"
+        class="inline-flex items-center gap-3.5 px-10 py-4.5 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-green-300 to-green-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center"
+      >
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

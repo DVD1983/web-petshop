@@ -1,0 +1,45 @@
+<nav
+  class="fixed top-0 left-0 w-full bg-amber-50 shadow-[0_2px_20px_rgba(0,0,0,0.06)] z-50 px-[30px] py-2 flex items-center justify-between max-md:px-4"
+>
+  <div class="flex items-center gap-4">
+    <img
+      src="/watermarked_img_15087738268608414710.jpg"
+      alt="MILO Logo"
+      class="h-[130px] w-[130px] rounded-full object-cover border-[3px] border-primary-300 shadow-[0_4px_12px_rgba(79,195,247,0.3)] max-md:h-[90px] max-md:w-[90px]"
+    />
+    <span
+      class="font-logo text-4xl font-medium bg-gradient-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent max-md:text-2xl"
+    >
+      MILO
+    </span>
+  </div>
+
+  <button class="hidden max-md:block bg-none border-none text-xl text-primary-500 cursor-pointer" id="menuToggle" aria-label="Menú">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <ul class="flex gap-6 list-none max-md:hidden max-md:flex-col max-md:absolute max-md:top-[70px] max-md:left-0 max-md:w-full max-md:bg-white max-md:p-5 max-md:shadow-md max-md:text-center" id="navLinks">
+    <li><a href="#inicio" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Inicio</a></li>
+    <li><a href="#nosotros" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Nosotros</a></li>
+    <li><a href="#productos" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Productos</a></li>
+    <li><a href="#galeria" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Galería</a></li>
+    <li><a href="#contacto" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Contacto</a></li>
+  </ul>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('max-md:hidden');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.add('max-md:hidden');
+      });
+    });
+  }
+</script>
