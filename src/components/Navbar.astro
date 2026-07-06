@@ -24,12 +24,19 @@
     <li><a href="#productos" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Productos</a></li>
     <li><a href="#galeria" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Galería</a></li>
     <li><a href="#contacto" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Contacto</a></li>
+      <li>
+        <button id="nav-cart-btn" class="relative bg-transparent border-none text-primary-500 text-xl cursor-pointer transition-colors duration-300 hover:text-primary-300" aria-label="Carrito">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="nav-cart-badge" class="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+        </button>
+      </li>
   </ul>
 </nav>
 
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
+  const navCartBtn = document.getElementById('nav-cart-btn');
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
@@ -41,5 +48,28 @@
         navLinks.classList.add('max-md:hidden');
       });
     });
+  }
+
+  if (navCartBtn) {
+    navCartBtn.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('open-cart'));
+    });
+  }
+
+  window.addEventListener('cart-updated', () => {
+    const badge = document.getElementById('nav-cart-badge');
+    if (!badge) return;
+    const cart = JSON.parse(localStorage.getItem('milo-cart') || '[]');
+    const count = cart.reduce((sum: number, item: { quantity: number }) => sum + item.quantity, 0);
+    badge.textContent = String(count);
+    badge.classList.toggle('hidden', count === 0);
+  });
+
+  const initialCart = JSON.parse(localStorage.getItem('milo-cart') || '[]');
+  const initialCount = initialCart.reduce((sum: number, item: { quantity: number }) => sum + item.quantity, 0);
+  const initialBadge = document.getElementById('nav-cart-badge');
+  if (initialBadge) {
+    initialBadge.textContent = String(initialCount);
+    initialBadge.classList.toggle('hidden', initialCount === 0);
   }
 </script>

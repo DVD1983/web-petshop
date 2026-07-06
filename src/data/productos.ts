@@ -1,0 +1,88 @@
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  specs: string[];
+  price: number;
+  image: string;
+  categorySlug: string;
+}
+
+export interface Category {
+  slug: string;
+  name: string;
+  image: string;
+  description: string;
+  gradient: string;
+}
+
+export const categories: Category[] = [
+  { slug: 'alimentos', name: 'Alimentos', image: '/images/milo-alimentos.jpg', description: 'Balanceados y comida húmeda para perros y gatos de todas las edades.', gradient: 'linear-gradient(135deg, #E1F5FE, #B3E5FC)' },
+  { slug: 'juguetes', name: 'Juguetes', image: '/images/cachorro-jugando.avif', description: 'Pelotas, mordedores y juegos interactivos para horas de diversión.', gradient: 'linear-gradient(135deg, #FCE4EC, #F8BBD0)' },
+  { slug: 'accesorios', name: 'Accesorios', image: '/images/accesorios.jpg', description: 'Correas, collares, camas y todo para la comodidad de tu mascota.', gradient: 'linear-gradient(135deg, #F3E5F5, #E1BEE7)' },
+  { slug: 'higiene', name: 'Higiene', image: '/images/higiene.png', description: 'Shampoos, cepillos, perfumes y productos de limpieza especializados.', gradient: 'linear-gradient(135deg, #E0F7FA, #B2EBF2)' },
+  { slug: 'camas', name: 'Camas', image: '/images/cama.avif', description: 'Cómodas camas y mantas para que duerman como reyes.', gradient: 'linear-gradient(135deg, #FFF8E1, #FFECB3)' },
+  { slug: 'snacks', name: 'Snacks', image: '/images/snacks.jpg', description: 'Premios y golosinas saludables para consentirlos todos los días.', gradient: 'linear-gradient(135deg, #E8F5E9, #C8E6C9)' },
+];
+
+export const products: Product[] = [
+  // === ALIMENTOS ===
+  { id: 'proplan-adultos', name: 'ProPlan Adultos Raza Pequeña', description: 'Alimento balanceado premium para perros adultos de razas pequeñas. Con pollo como ingrediente principal y fórmula optimizada para la salud digestiva.', specs: ['3 kg', 'Pollo real', 'Sin colorantes', 'Antioxidantes naturales'], price: 12500, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=ProPlan', categorySlug: 'alimentos' },
+  { id: 'royal-canin-cachorro', name: 'Royal Canin Cachorro', description: 'Alimento super premium para cachorros hasta 12 meses. Formulado con proteínas de alta calidad y ácidos grasos esenciales para un desarrollo óptimo.', specs: ['7.5 kg', 'Proteína 32%', 'DHA natural', 'Vitaminas E+C'], price: 18900, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=Royal+Canin', categorySlug: 'alimentos' },
+  { id: 'excellent-adultos', name: 'Excellent Adultos x20kg', description: 'Alimento balanceado completo para perros adultos de todas las razas. Elaborado con cereales seleccionados y proteínas animales de primera calidad.', specs: ['20 kg', 'Carne vacuna', 'Granos enteros', 'Sin TACC'], price: 25400, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=Excellent', categorySlug: 'alimentos' },
+  { id: 'old-prince-gatos', name: 'Old Prince Gatos Adultos', description: 'Alimento premium para gatos adultos. Con control de pH urinario y fórmula light para mantener un peso saludable.', specs: ['7.5 kg', 'Pescado', 'Control urinario', 'Light'], price: 14200, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=Old+Prince', categorySlug: 'alimentos' },
+  { id: 'whiskas-sobre', name: 'Whiskas Sobre Húmedo x12', description: 'Sobres húmedos para gatos en deliciosa salsa. Variedad de sabores: pollo, pescado y carne.', specs: ['12 sobres', 'Sabor variado', 'Húmedo', 'En salsa'], price: 4800, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=Whiskas', categorySlug: 'alimentos' },
+  { id: 'pedigree-adultos', name: 'Pedigree Adultos x21kg', description: 'Alimento balanceado para perros adultos con nutrientes esenciales para una vida activa y saludable.', specs: ['21 kg', 'Carne y cereales', 'Vitaminas', 'Calcio natural'], price: 22100, image: 'https://placehold.co/400x400/4FC3F7/ffffff?text=Pedigree', categorySlug: 'alimentos' },
+
+  // === JUGUETES ===
+  { id: 'pelota-kong', name: 'Pelota Kong Clásica', description: 'Pelota de goma resistente ideal para juegos de buscar y atrapar. Su rebote impredecible la hace irresistible para los perros.', specs: ['Goma natural', 'Rebote irregular', 'Resistente', 'Flota'], price: 5200, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Kong', categorySlug: 'juguetes' },
+  { id: 'mordedor-dental', name: 'Mordedor Dental Pollo', description: 'Juguete mordedor texturizado que ayuda a limpiar los dientes mientras tu perro juega. Sabor a pollo que encanta.', specs: ['Sabor pollo', 'Limpieza dental', 'Textura suave', 'Goma atóxica'], price: 3800, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Mordedor', categorySlug: 'juguetes' },
+  { id: 'juguete-cuerda', name: 'Juguete Cuerda Nudos', description: 'Juguete interactivo de cuerda con nudos para juegos de tira y afloja. Fortalece el vínculo con tu mascota.', specs: ['Algodón', 'Nudos reforzados', '30 cm', 'Lavable'], price: 2500, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Cuerda', categorySlug: 'juguetes' },
+  { id: 'pelota-led', name: 'Pelota LED Saltarina', description: 'Pelota luminosa con LED intermitente para jugar en la oscuridad. Rebota y brilla para diversión sin fin.', specs: ['LED intermitente', 'Goma siliconada', 'Batería incluida', 'No tóxica'], price: 4100, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Pelota+LED', categorySlug: 'juguetes' },
+  { id: 'frisbee-volador', name: 'Frisbee Volador Suave', description: 'Disco volador de tela suave apto para interiores y exteriores. Ideal para juegos de buscar y atrapar.', specs: ['Tela plegable', 'Diámetro 25cm', 'Lavable', 'No lastima'], price: 3200, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Frisbee', categorySlug: 'juguetes' },
+  { id: 'raton-gato', name: 'Ratón Juguete para Gato', description: 'Juguete con forma de ratón que estimula el instinto cazador de tu gato. Incluye hierba gatera.', specs: ['Peluche suave', 'Hierba gatera', 'Sonido interior', '8 cm'], price: 1900, image: 'https://placehold.co/400x400/F8BBD0/ffffff?text=Raton', categorySlug: 'juguetes' },
+
+  // === ACCESORIOS ===
+  { id: 'correa-ajustable', name: 'Correa Ajustable 1.5m', description: 'Correa de nylon resistente con gancho giratorio y protector de mano. Ajustable y cómoda para pasear.', specs: ['Nylon resistente', '1.5 metros', 'Gancho giratorio', 'Protector de mano'], price: 3500, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Correa', categorySlug: 'accesorios' },
+  { id: 'collar-reflectivo', name: 'Collar Reflectivo Talla M', description: 'Collar de seguridad con banda reflectiva para paseos nocturnos. Hebilla de liberación rápida.', specs: ['Reflectivo', 'Talla M (35-45cm)', 'Liberación rápida', 'Nylon'], price: 2800, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Collar', categorySlug: 'accesorios' },
+  { id: 'comedero-doble', name: 'Comedero Doble Acero', description: 'Comedero doble de acero inoxidable con base antideslizante. Dos compartimentos para comida y agua.', specs: ['Acero inoxidable', 'Base antideslizante', '2 compartimentos', 'Capacidad 500ml c/u'], price: 6200, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Comedero', categorySlug: 'accesorios' },
+  { id: 'bebedero-automatico', name: 'Bebedero Automático 2L', description: 'Bebedero con depósito de 2 litros que suministra agua fresca de forma continua. Filtro de carbón incluido.', specs: ['2 litros', 'Flujo continuo', 'Filtro carbón', 'Silencioso'], price: 8900, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Bebedero', categorySlug: 'accesorios' },
+  { id: 'arnes-antitiro', name: 'Arnés Antitiro Talla L', description: 'Arnés de control con anilla frontal para perros que tiran de la correa. Acolchado y ajustable.', specs: ['Talla L (50-70cm)', 'Antitiro', 'Acolchado', 'Anilla frontal'], price: 5400, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Arnes', categorySlug: 'accesorios' },
+  { id: 'pretal-acolchado', name: 'Pretal Acolchado', description: 'Pretal acolchado de tela suave para paseos diarios. Distribuye la presión de forma uniforme.', specs: ['Tela acolchada', 'Distribuye presión', 'Ajustable', 'Varios colores'], price: 4700, image: 'https://placehold.co/400x400/E1BEE7/ffffff?text=Pretal', categorySlug: 'accesorios' },
+
+  // === HIGIENE ===
+  { id: 'shampoo-neutro', name: 'Shampoo Neutro x500ml', description: 'Shampoo suave con pH balanceado para perros y gatos. Limpia sin irritar la piel. Ideal para baños frecuentes.', specs: ['500 ml', 'pH neutro', 'Sin parabenos', 'Aroma suave'], price: 3200, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Shampoo', categorySlug: 'higiene' },
+  { id: 'cepillo-cerdas', name: 'Cepillo Cerdas Suaves', description: 'Cepillo de cerdas suaves con mango ergonómico para eliminar el pelo suelto y desenredar sin lastimar.', specs: ['Cerdas suaves', 'Mango ergonómico', 'Antiestático', 'Limpieza profunda'], price: 2100, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Cepillo', categorySlug: 'higiene' },
+  { id: 'perfume-desodorante', name: 'Perfume Desodorante x250ml', description: 'Perfume desodorante en spray para eliminar olores entre baños. Fórmula sin alcohol con aroma duradero.', specs: ['250 ml', 'Sin alcohol', 'Elimina olores', 'Aroma duradero'], price: 2800, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Perfume', categorySlug: 'higiene' },
+  { id: 'cortaunas-profesional', name: 'Cortaúñas Profesional', description: 'Cortaúñas de acero inoxidable con seguro de seguridad y mango antideslizante. Para perros y gatos.', specs: ['Acero inoxidable', 'Seguro seguridad', 'Mango antideslizante', 'Talla única'], price: 1900, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Cortaunas', categorySlug: 'higiene' },
+  { id: 'toallitas-humedas', name: 'Toallitas Húmedas x50u', description: 'Toallitas húmedas para limpieza diaria de patas y cuerpo. Con aloe vera y vitamina E.', specs: ['50 unidades', 'Aloe vera', 'Vitamina E', 'Biodegradables'], price: 2400, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Toallitas', categorySlug: 'higiene' },
+  { id: 'cepillo-dental-set', name: 'Cepillo Dental Set', description: 'Kit de limpieza dental con cepillo de doble cabezal y pasta dental sabor pollo. Previene el sarro.', specs: ['Cepillo doble', 'Pasta sabor pollo', 'Previene sarro', 'Fácil uso'], price: 3600, image: 'https://placehold.co/400x400/B2EBF2/ffffff?text=Dental', categorySlug: 'higiene' },
+
+  // === CAMAS ===
+  { id: 'cama-cueva-m', name: 'Cama Tipo Cueva Talle M', description: 'Cama con diseño de cueva que brinda seguridad y calidez. Base acolchonada y funda desmontable.', specs: ['Talle M (60x50cm)', 'Funda removible', 'Base acolchonada', 'Lavable'], price: 8500, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Cueva', categorySlug: 'camas' },
+  { id: 'cama-ovalada-g', name: 'Cama Ovalada Peluche Talle G', description: 'Cama ultra suave de peluche con bordes elevados para apoyar la cabeza. Ideal para perros que se acurrucan.', specs: ['Talle G (80x60cm)', 'Peluche suave', 'Bordes elevados', 'Base antideslizante'], price: 11200, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Ovalada', categorySlug: 'camas' },
+  { id: 'colchoneta-impermeable', name: 'Colchoneta Impermeable', description: 'Colchoneta con capa impermeable y relleno ortopédico. Ideal para jaulas, cajones o pisos fríos.', specs: ['Impermeable', 'Relleno ortopédico', '70x90cm', 'Fácil limpieza'], price: 6800, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Colchoneta', categorySlug: 'camas' },
+  { id: 'cama-hamaca', name: 'Cama Hamaca Elevada', description: 'Cama elevada con estructura metálica y tela transpirable. Mantiene a tu mascota fresca en verano.', specs: ['Elevada 15cm', 'Tela mesh', 'Estructura metálica', 'Talle L'], price: 9400, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Hamaca', categorySlug: 'camas' },
+  { id: 'manta-termica', name: 'Manta Térmica Suave', description: 'Manta de microfibra suave con capa térmica para mantener el calor corporal. Perfecta para invierno.', specs: ['Microfibra', 'Capa térmica', '100x70cm', 'Lavable a máquina'], price: 5100, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Manta', categorySlug: 'camas' },
+  { id: 'cucha-plegable', name: 'Cucha Interior Plegable', description: 'Cucha plegable tipo iglú con materiales resistentes. Fácil de armar y transportar.', specs: ['Plegable', 'Tela resistente', 'Fácil armado', 'Incluye cojín'], price: 13600, image: 'https://placehold.co/400x400/FFECB3/ffffff?text=Cucha', categorySlug: 'camas' },
+
+  // === SNACKS ===
+  { id: 'snack-dental-pollo', name: 'Snack Dental Pollo x150g', description: 'Snacks dentales en forma de hueso que ayudan a reducir el sarro mientras tu perro mastica. Sabor a pollo.', specs: ['150 g', 'Reduce sarro', 'Sabor pollo', 'Bajo en grasa'], price: 2900, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Dental', categorySlug: 'snacks' },
+  { id: 'galletas-carne', name: 'Galletas Sabor Carne x300g', description: 'Galletas horneadas crujientes con sabor a carne real. Ideales como premio diario sin exceso de calorías.', specs: ['300 g', 'Horneadas', 'Carne real', 'Crujientes'], price: 2200, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Galletas', categorySlug: 'snacks' },
+  { id: 'hueso-cuero', name: 'Hueso Cuero Natural', description: 'Hueso de cuero natural prensado 100% digestible. Horas de masticación segura y entretenimiento.', specs: ['Cuero natural', 'Digestible', 'Talle único', 'Prensado'], price: 1500, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Hueso', categorySlug: 'snacks' },
+  { id: 'premios-higado', name: 'Premios Hígado Deshidratado', description: 'Premios 100% naturales de hígado vacuno deshidratado. Sin conservantes ni aditivos artificiales.', specs: ['Hígado vacuno', 'Deshidratado', 'Natural', 'Sin conservantes'], price: 3100, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Higado', categorySlug: 'snacks' },
+  { id: 'palito-queso', name: 'Palito Sabor Queso x6', description: 'Palitos masticables rellenos con crema sabor queso. Ideales para perros de todas las tallas.', specs: ['6 unidades', 'Relleno queso', 'Masticable', 'Larga duración'], price: 2600, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Palito+Queso', categorySlug: 'snacks' },
+  { id: 'snack-suave-adultos', name: 'Snack Suave Adultos x200g', description: 'Snacks suaves y tiernos ideales para perros adultos y senior. Fáciles de masticar y altamente palatables.', specs: ['200 g', 'Textura suave', 'Adultos/senior', 'Alta palatabilidad'], price: 2400, image: 'https://placehold.co/400x400/C8E6C9/ffffff?text=Snack+Suave', categorySlug: 'snacks' },
+];
+
+export function getProductsByCategory(slug: string): Product[] {
+  return products.filter(p => p.categorySlug === slug);
+}
+
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return categories.find(c => c.slug === slug);
+}
+
+export function getProductById(id: string): Product | undefined {
+  return products.find(p => p.id === id);
+}

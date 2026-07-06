@@ -1,4 +1,6 @@
 ---
+import Cart from '../components/Cart.astro';
+
 export interface Props {
   title?: string;
 }
@@ -26,5 +28,6 @@ const { title = 'MILO - Pet Shop' } = Astro.props;
   </head>
   <body class="font-body text-gray-700 scroll-smooth">
     <slot />
+    <Cart />
   </body>
 </html>

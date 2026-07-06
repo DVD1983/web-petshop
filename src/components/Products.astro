@@ -1,30 +1,7 @@
 ---
+import { categories } from '../data/productos';
+
 const { id } = Astro.props;
-
-interface Product {
-  icon?: string;
-  image?: string;
-  title: string;
-  description: string;
-}
-
-const products: Product[] = [
-  { image: '/images/milo-alimentos.jpg', title: 'Alimentos', description: 'Balanceados y comida húmeda para perros y gatos de todas las edades.' },
-  { image: '/images/cachorro-jugando.avif', title: 'Juguetes', description: 'Pelotas, mordedores y juegos interactivos para horas de diversión.' },
-  { image: '/images/accesorios.jpg', title: 'Accesorios', description: 'Correas, collares, camas y todo para la comodidad de tu mascota.' },
-  { image: '/images/higiene.png', title: 'Higiene', description: 'Shampoos, cepillos, perfumes y productos de limpieza especializados.' },
-  { image: '/images/cama.avif', title: 'Camas', description: 'Cómodas camas y mantas para que duerman como reyes.' },
-  { image: '/images/snacks.jpg', title: 'Snacks', description: 'Premios y golosinas saludables para consentirlos todos los días.' },
-];
-
-const gradients = [
-  'linear-gradient(135deg, #E1F5FE, #B3E5FC)',
-  'linear-gradient(135deg, #FCE4EC, #F8BBD0)',
-  'linear-gradient(135deg, #F3E5F5, #E1BEE7)',
-  'linear-gradient(135deg, #E0F7FA, #B2EBF2)',
-  'linear-gradient(135deg, #FFF8E1, #FFECB3)',
-  'linear-gradient(135deg, #E8F5E9, #C8E6C9)',
-];
 ---
 
 <section id={id} class="py-[70px] px-5 bg-white max-md:py-12 max-md:px-4">
@@ -33,20 +10,20 @@ const gradients = [
       Nuestros Productos
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:grid-cols-1 max-md:grid-cols-2">
-      {products.map((product, index) => {
+      {categories.map((cat) => {
         return (
-          <div
-            class="rounded-xl px-5 py-8 text-center shadow-sm transition-all duration-400 hover:-translate-y-2 hover:shadow-md relative overflow-hidden"
-            style={`background: ${gradients[index]}`}
+          <a
+            href={`/productos/${cat.slug}`}
+            class="block rounded-xl px-5 py-8 text-center shadow-sm transition-all duration-400 hover:-translate-y-2 hover:shadow-md relative overflow-hidden no-underline"
+            style={`background: ${cat.gradient}`}
           >
-            {product.image ? (
-              <img src={product.image} alt={product.title} class="block w-40 h-40 object-cover rounded-2xl mx-auto mb-4 relative z-10" />
-            ) : (
-              <iconify-icon icon={product.icon} width="56" height="56" class="text-primary-500 mb-4 relative z-10" inline></iconify-icon>
-            )}
-            <h3 class="font-body text-xl font-bold text-gray-800 mb-2 relative z-10">{product.title}</h3>
-            <p class="font-body text-sm text-gray-500 leading-relaxed font-medium relative z-10">{product.description}</p>
-          </div>
+            <img src={cat.image} alt={cat.name} class="block w-40 h-40 object-cover rounded-2xl mx-auto mb-4 relative z-10" />
+            <h3 class="font-body text-xl font-bold text-gray-800 mb-2 relative z-10">{cat.name}</h3>
+            <p class="font-body text-sm text-gray-500 leading-relaxed font-medium relative z-10">{cat.description}</p>
+            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-primary-500 text-white font-body font-bold text-xs relative z-10 transition-all duration-300 hover:bg-primary-400">
+              Explorar <i class="fas fa-arrow-right ml-1 text-xs"></i>
+            </span>
+          </a>
         );
       })}
     </div>

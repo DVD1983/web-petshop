@@ -1,0 +1,177 @@
+<div id="cart-container" class="hidden">
+  <button id="cart-toggle" class="fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-primary-500 text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer border-none">
+    <i class="fas fa-shopping-cart text-xl"></i>
+    <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+  </button>
+
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-[60] transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-white z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+      <h2 class="font-logo text-xl font-bold text-gray-800">Tu Carrito</h2>
+      <button id="cart-close" class="text-gray-400 hover:text-gray-600 text-2xl cursor-pointer bg-transparent border-none transition-colors duration-200">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4">
+      <p class="text-gray-400 text-center mt-10" id="cart-empty">Tu carrito está vacío</p>
+    </div>
+
+    <div id="cart-footer" class="hidden border-t border-gray-100 px-6 py-4 space-y-3">
+      <div class="flex justify-between items-center">
+        <span class="font-body font-semibold text-gray-600">Total</span>
+        <span id="cart-total" class="font-logo text-xl font-bold text-primary-500">$0</span>
+      </div>
+      <button id="cart-clear" class="w-full py-2.5 rounded-full bg-gray-100 text-gray-500 font-body font-semibold text-sm transition-all duration-300 hover:bg-red-50 hover:text-red-500 cursor-pointer border-none flex items-center justify-center gap-2">
+        <i class="fas fa-trash-alt text-xs"></i> Vaciar carrito
+      </button>
+      <button id="cart-whatsapp" class="w-full py-3.5 rounded-full bg-gradient-to-r from-green-300 to-green-500 text-white font-body font-bold text-base shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer border-none flex items-center justify-center gap-2">
+        <i class="fab fa-whatsapp text-lg"></i>
+        Completar pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { getCartItems, getCartCount, getCartTotal, formatPrice, addToCart, removeFromCart, updateQuantity, openWhatsAppCart } from '../scripts/cart';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('cart-container');
+    const toggleBtn = document.getElementById('cart-toggle');
+    const closeBtn = document.getElementById('cart-close');
+    const overlay = document.getElementById('cart-overlay');
+    const drawer = document.getElementById('cart-drawer');
+    const badge = document.getElementById('cart-badge');
+    const itemsEl = document.getElementById('cart-items');
+    const totalEl = document.getElementById('cart-total');
+    const footerEl = document.getElementById('cart-footer');
+    const emptyMsg = document.getElementById('cart-empty');
+    const whatsappBtn = document.getElementById('cart-whatsapp');
+    const clearBtn = document.getElementById('cart-clear');
+
+    container.classList.remove('hidden');
+
+    function renderCart() {
+      const raw = localStorage.getItem('milo-cart');
+      let items: any[];
+      try {
+        items = raw ? JSON.parse(raw) : [];
+      } catch {
+        items = [];
+      }
+      const count = items.reduce((s: number, i: any) => s + (i.quantity || 0), 0);
+      const total = items.reduce((s: number, i: any) => s + i.price * i.quantity, 0);
+
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+
+      const navBadge = document.getElementById('nav-cart-badge');
+      if (navBadge) {
+        navBadge.textContent = String(count);
+        navBadge.classList.toggle('hidden', count === 0);
+      }
+
+      if (items.length === 0) {
+        itemsEl.innerHTML = '<p class="text-gray-400 text-center mt-10">Tu carrito está vacío</p>';
+        footerEl.classList.add('hidden');
+        return;
+      }
+
+      footerEl.classList.remove('hidden');
+      totalEl.textContent = formatPrice(total);
+
+      itemsEl.innerHTML = items.map(item => `
+        <div class="flex items-center gap-4 py-3 border-b border-gray-50 last:border-0" data-product-id="${item.productId}">
+          <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" />
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-gray-800 text-sm truncate">${item.name}</p>
+            <p class="font-body text-xs text-gray-400">${formatPrice(item.price)} c/u</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="qty-minus w-7 h-7 rounded-full bg-gray-100 text-gray-600 font-bold text-sm cursor-pointer border-none hover:bg-gray-200 transition-colors">-</button>
+            <span class="qty-value font-body font-semibold text-sm w-5 text-center">${item.quantity}</span>
+            <button class="qty-plus w-7 h-7 rounded-full bg-gray-100 text-gray-600 font-bold text-sm cursor-pointer border-none hover:bg-gray-200 transition-colors">+</button>
+          </div>
+          <button class="remove-item text-gray-300 hover:text-red-400 transition-colors cursor-pointer bg-transparent border-none text-sm">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      `).join('');
+
+      itemsEl.querySelectorAll('.qty-minus').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          const item = items[i];
+          if (item.quantity > 1) {
+            updateQuantity(item.productId, item.quantity - 1);
+          } else {
+            removeFromCart(item.productId);
+          }
+          renderCart();
+        });
+      });
+
+      itemsEl.querySelectorAll('.qty-plus').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          const item = items[i];
+          updateQuantity(item.productId, item.quantity + 1);
+          renderCart();
+        });
+      });
+
+      itemsEl.querySelectorAll('.remove-item').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          removeFromCart(items[i].productId);
+          renderCart();
+        });
+      });
+    }
+
+    function openCart() {
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      overlay.classList.add('opacity-100');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+      renderCart();
+    }
+
+    function closeCart() {
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      overlay.classList.remove('opacity-100');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    toggleBtn.addEventListener('click', openCart);
+    closeBtn.addEventListener('click', closeCart);
+    overlay.addEventListener('click', closeCart);
+
+    whatsappBtn.addEventListener('click', () => {
+      openWhatsAppCart();
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        localStorage.removeItem('milo-cart');
+        window.dispatchEvent(new CustomEvent('cart-updated', { detail: [] }));
+        renderCart();
+      });
+    }
+
+    window.addEventListener('cart-updated', () => {
+      if (!drawer.classList.contains('translate-x-full')) {
+        renderCart();
+      } else {
+        badge.textContent = getCartCount();
+        badge.style.display = getCartCount() > 0 ? 'flex' : 'none';
+      }
+    });
+
+    window.addEventListener('open-cart', openCart);
+    window.addEventListener('close-cart', closeCart);
+
+    badge.textContent = getCartCount();
+    badge.style.display = getCartCount() > 0 ? 'flex' : 'none';
+  });
+</script>
