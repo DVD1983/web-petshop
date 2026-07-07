@@ -71,7 +71,7 @@ if (!product) {
               <input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" />
             </label>
             <span class="text-gray-400 text-sm">o</span>
-            <input type="url" id="image" name="image" class="input-field flex-1" value={product.image} />
+            <input type="text" id="image" name="image" class="input-field flex-1" value={product.image} />
           </div>
           <div id="imagePreview">
             <img src={product.image} alt="preview" class="w-24 h-24 rounded-xl object-cover border border-gray-200" />
