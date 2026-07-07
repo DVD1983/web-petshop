@@ -1,6 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind()],
+  output: 'server',
+  adapter: vercel(),
+  integrations: [tailwind(), sitemap()],
+  site: 'https://milo-petshop.vercel.app',
 });

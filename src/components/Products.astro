@@ -1,6 +1,7 @@
 ---
-import { categories } from '../data/productos';
+import { getAllCategories } from '../lib/storage';
 
+const categories = await getAllCategories();
 const { id } = Astro.props;
 ---
 

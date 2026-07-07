@@ -3,9 +3,13 @@ import Cart from '../components/Cart.astro';
 
 export interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = 'MILO - Pet Shop' } = Astro.props;
+const { title = 'MILO - Pet Shop', description = 'En MILO amamos a las mascotas tanto como vos. Encontrá alimentos, juguetes, accesorios, higiene, camas y snacks para perros y gatos. ¡Hacé tu pedido por WhatsApp!' } = Astro.props;
+const siteUrl = 'https://milo-petshop.vercel.app';
+const ogImage = '/images/milo-alimentos.jpg';
 ---
 
 <!DOCTYPE html>
@@ -14,6 +18,24 @@ const { title = 'MILO - Pet Shop' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="pet shop, mascotas, perros, gatos, alimentos, accesorios, juguetes, MILO, Solano" />
+    <meta name="author" content="MILO Pet Shop" />
+    <meta name="theme-color" content="#4FC3F7" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

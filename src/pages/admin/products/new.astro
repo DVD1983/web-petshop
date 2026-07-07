@@ -1,0 +1,112 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getAllCategories } from '../../../lib/storage';
+
+const categories = await getAllCategories();
+---
+
+<AdminLayout title="Nuevo Producto - MILO Admin">
+  <div class="mb-8">
+    <a href="/admin" class="text-sm text-gray-400 hover:text-primary-400 transition-colors">
+      <i class="fas fa-arrow-left mr-1"></i> Volver a productos
+    </a>
+    <h1 class="text-2xl font-bold text-gray-800 mt-2">Nuevo Producto</h1>
+  </div>
+
+  <div class="card max-w-2xl">
+    <form id="productForm" class="flex flex-col gap-5">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="id" class="block text-sm font-semibold text-gray-600 mb-1.5">ID *</label>
+          <input type="text" id="id" name="id" required class="input-field" placeholder="ej: nuevo-producto" />
+          <p class="text-xs text-gray-400 mt-1">Identificador único (sin espacios, sin caracteres especiales)</p>
+        </div>
+        <div>
+          <label for="categorySlug" class="block text-sm font-semibold text-gray-600 mb-1.5">Categoría *</label>
+          <select id="categorySlug" name="categorySlug" required class="input-field">
+            <option value="">Seleccionar categoría...</option>
+            {categories.map(cat => (
+              <option value={cat.slug}>{cat.name}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="name" class="block text-sm font-semibold text-gray-600 mb-1.5">Nombre del producto *</label>
+        <input type="text" id="name" name="name" required class="input-field" placeholder="Ej: ProPlan Adultos Raza Pequeña" />
+      </div>
+
+      <div>
+        <label for="description" class="block text-sm font-semibold text-gray-600 mb-1.5">Descripción</label>
+        <textarea id="description" name="description" rows="3" class="input-field" placeholder="Descripción del producto..."></textarea>
+      </div>
+
+      <div>
+        <label for="specs" class="block text-sm font-semibold text-gray-600 mb-1.5">Especificaciones</label>
+        <input type="text" id="specs" name="specs" class="input-field" placeholder="Ej: 3 kg, Pollo real, Sin colorantes" />
+        <p class="text-xs text-gray-400 mt-1">Separadas por coma</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="price" class="block text-sm font-semibold text-gray-600 mb-1.5">Precio ($) *</label>
+          <input type="number" id="price" name="price" required min="0" class="input-field" placeholder="12500" />
+        </div>
+        <div>
+          <label for="image" class="block text-sm font-semibold text-gray-600 mb-1.5">URL de imagen</label>
+          <input type="url" id="image" name="image" class="input-field" placeholder="https://..." />
+          <p class="text-xs text-gray-400 mt-1">Dejar vacío para usar imagen por defecto</p>
+        </div>
+      </div>
+
+      <p id="errorMsg" class="text-red-500 text-sm hidden"></p>
+
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="btn-primary">Crear producto</button>
+        <a href="/admin" class="btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.classList.add('hidden');
+
+      const form = e.target;
+      const specsRaw = document.getElementById('specs').value;
+      const specs = specsRaw ? specsRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+      const data = {
+        id: document.getElementById('id').value.trim(),
+        name: document.getElementById('name').value.trim(),
+        description: document.getElementById('description').value.trim(),
+        specs,
+        price: Number(document.getElementById('price').value),
+        image: document.getElementById('image').value.trim() || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
+        categorySlug: document.getElementById('categorySlug').value,
+      };
+
+      try {
+        const res = await fetch('/api/products', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          window.location.href = '/admin';
+        } else {
+          const err = await res.json();
+          errorMsg.textContent = err.error || 'Error al crear el producto';
+          errorMsg.classList.remove('hidden');
+        }
+      } catch {
+        errorMsg.textContent = 'Error de conexión';
+        errorMsg.classList.remove('hidden');
+      }
+    });
+  </script>
+</AdminLayout>

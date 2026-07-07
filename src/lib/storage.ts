@@ -1,0 +1,122 @@
+import { kv } from '@vercel/kv';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import type { Product, Category } from '../data/productos';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_FILE = path.resolve(__dirname, '../../src/data/productos.json');
+
+type StoreData = {
+  categories: Category[];
+  products: Product[];
+};
+
+function isVercelKvConfigured(): boolean {
+  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
+function readJsonFile(): StoreData {
+  const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+  return JSON.parse(raw);
+}
+
+function writeJsonFile(data: StoreData): void {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+async function seedKvIfEmpty(): Promise<StoreData | null> {
+  try {
+    const existing = await kv.get<StoreData>('products');
+    if (existing) return existing;
+    const seed = readJsonFile();
+    await kv.set('products', seed);
+    return seed;
+  } catch {
+    const seed = readJsonFile();
+    return seed;
+  }
+}
+
+export async function getAllProducts(): Promise<Product[]> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    return data?.products || [];
+  }
+  return readJsonFile().products;
+}
+
+export async function getProductById(id: string): Promise<Product | null> {
+  const products = await getAllProducts();
+  return products.find(p => p.id === id) || null;
+}
+
+export async function getProductsByCategory(slug: string): Promise<Product[]> {
+  const products = await getAllProducts();
+  return products.filter(p => p.categorySlug === slug);
+}
+
+export async function createProduct(product: Product): Promise<Product> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    if (data) {
+      data.products.push(product);
+      await kv.set('products', data);
+    }
+    return product;
+  }
+  const data = readJsonFile();
+  data.products.push(product);
+  writeJsonFile(data);
+  return product;
+}
+
+export async function updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    if (!data) return null;
+    const idx = data.products.findIndex(p => p.id === id);
+    if (idx === -1) return null;
+    data.products[idx] = { ...data.products[idx], ...updates };
+    await kv.set('products', data);
+    return data.products[idx];
+  }
+  const data = readJsonFile();
+  const idx = data.products.findIndex(p => p.id === id);
+  if (idx === -1) return null;
+  data.products[idx] = { ...data.products[idx], ...updates };
+  writeJsonFile(data);
+  return data.products[idx];
+}
+
+export async function deleteProduct(id: string): Promise<boolean> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    if (!data) return false;
+    const len = data.products.length;
+    data.products = data.products.filter(p => p.id !== id);
+    if (data.products.length === len) return false;
+    await kv.set('products', data);
+    return true;
+  }
+  const data = readJsonFile();
+  const len = data.products.length;
+  data.products = data.products.filter(p => p.id !== id);
+  if (data.products.length === len) return false;
+  writeJsonFile(data);
+  return true;
+}
+
+export async function getAllCategories(): Promise<Category[]> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    return data?.categories || [];
+  }
+  return readJsonFile().categories;
+}
+
+export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+  const categories = await getAllCategories();
+  return categories.find(c => c.slug === slug) || null;
+}
