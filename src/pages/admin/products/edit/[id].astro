@@ -55,9 +55,29 @@ if (!product) {
         <p class="text-xs text-gray-400 mt-1">Separadas por coma</p>
       </div>
 
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="stock" class="block text-sm font-semibold text-gray-600 mb-1.5">Stock</label>
+          <input type="number" id="stock" name="stock" min="0" class="input-field" value={product.stock ?? 0} />
+        </div>
+      </div>
+
       <div>
-        <label for="image" class="block text-sm font-semibold text-gray-600 mb-1.5">URL de imagen</label>
-        <input type="url" id="image" name="image" class="input-field" value={product.image} />
+        <label class="block text-sm font-semibold text-gray-600 mb-1.5">Imagen</label>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <label class="cursor-pointer px-4 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-50 transition-colors text-sm text-gray-600">
+              <i class="fas fa-upload mr-1"></i> Subir archivo
+              <input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp,image/gif" class="hidden" />
+            </label>
+            <span class="text-gray-400 text-sm">o</span>
+            <input type="url" id="image" name="image" class="input-field flex-1" value={product.image} />
+          </div>
+          <div id="imagePreview">
+            <img src={product.image} alt="preview" class="w-24 h-24 rounded-xl object-cover border border-gray-200" />
+          </div>
+          <p class="text-xs text-gray-400">Subí un archivo o ingresá una URL. Máx 5MB.</p>
+        </div>
       </div>
 
       <p id="errorMsg" class="text-red-500 text-sm hidden"></p>
@@ -70,10 +90,44 @@ if (!product) {
   </div>
 
   <script>
+    const imageFile = document.getElementById('imageFile');
+    const imageUrl = document.getElementById('image');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = imagePreview.querySelector('img');
+
+    imageFile.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('La imagen no puede superar los 5MB', 'error');
+        imageFile.value = '';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        previewImg.src = ev.target.result;
+        imageUrl.value = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    imageUrl.addEventListener('input', () => {
+      if (imageUrl.value) {
+        previewImg.src = imageUrl.value;
+        imagePreview.classList.remove('hidden');
+        imageFile.value = '';
+      }
+    });
+
     document.getElementById('productForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const errorMsg = document.getElementById('errorMsg');
       errorMsg.classList.add('hidden');
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
 
       const specsRaw = document.getElementById('specs').value;
       const specs = specsRaw ? specsRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
@@ -83,7 +137,8 @@ if (!product) {
         description: document.getElementById('description').value.trim(),
         specs,
         price: Number(document.getElementById('price').value),
-        image: document.getElementById('image').value.trim() || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
+        stock: Number(document.getElementById('stock').value) || 0,
+        image: imageUrl.value.trim() || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
         categorySlug: document.getElementById('categorySlug').value,
       };
 
@@ -97,15 +152,20 @@ if (!product) {
         });
 
         if (res.ok) {
-          window.location.href = '/admin';
+          showToast('Producto actualizado', 'success');
+          setTimeout(() => window.location.href = '/admin', 600);
         } else {
           const err = await res.json();
           errorMsg.textContent = err.error || 'Error al guardar los cambios';
           errorMsg.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Guardar cambios';
         }
       } catch {
         errorMsg.textContent = 'Error de conexión';
         errorMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Guardar cambios';
       }
     });
   </script>

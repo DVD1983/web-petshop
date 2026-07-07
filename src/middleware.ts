@@ -16,6 +16,7 @@ const apiRoutes = [
   '/api/auth/me',
   '/api/products',
   '/api/categories',
+  '/api/upload',
 ];
 
 export const onRequest = defineMiddleware(async (context, next) => {

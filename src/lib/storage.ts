@@ -124,3 +124,50 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
   const categories = await getAllCategories();
   return categories.find(c => c.slug === slug) || null;
 }
+
+export async function createCategory(category: Category): Promise<Category> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    data.categories.push(category);
+    await kv.set('products', data);
+    return category;
+  }
+  const data = readJsonFile();
+  data.categories.push(category);
+  writeJsonFile(data);
+  return category;
+}
+
+export async function updateCategory(slug: string, updates: Partial<Category>): Promise<Category | null> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    const idx = data.categories.findIndex(c => c.slug === slug);
+    if (idx === -1) return null;
+    data.categories[idx] = { ...data.categories[idx], ...updates };
+    await kv.set('products', data);
+    return data.categories[idx];
+  }
+  const data = readJsonFile();
+  const idx = data.categories.findIndex(c => c.slug === slug);
+  if (idx === -1) return null;
+  data.categories[idx] = { ...data.categories[idx], ...updates };
+  writeJsonFile(data);
+  return data.categories[idx];
+}
+
+export async function deleteCategory(slug: string): Promise<boolean> {
+  if (isVercelKvConfigured()) {
+    const data = await seedKvIfEmpty();
+    const len = data.categories.length;
+    data.categories = data.categories.filter(c => c.slug !== slug);
+    if (data.categories.length === len) return false;
+    await kv.set('products', data);
+    return true;
+  }
+  const data = readJsonFile();
+  const len = data.categories.length;
+  data.categories = data.categories.filter(c => c.slug !== slug);
+  if (data.categories.length === len) return false;
+  writeJsonFile(data);
+  return true;
+}

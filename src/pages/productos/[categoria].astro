@@ -49,15 +49,25 @@ if (!category) {
                   </div>
                 )}
                 <div class="mt-auto flex items-center justify-between pt-3 border-t border-gray-50">
-                  <span class="font-logo text-xl font-bold text-primary-500">{new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(product.price).replace('ARS', '$').trim()}</span>
+                  <div>
+                    <span class="font-logo text-xl font-bold text-primary-500">{new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(product.price).replace('ARS', '$').trim()}</span>
+                    {product.stock !== undefined && product.stock < 5 && product.stock > 0 && (
+                      <p class="text-xs text-yellow-600 font-semibold mt-0.5">Últimas {product.stock} unidades</p>
+                    )}
+                    {product.stock !== undefined && product.stock === 0 && (
+                      <p class="text-xs text-red-500 font-semibold mt-0.5">Sin stock</p>
+                    )}
+                  </div>
                   <button
                     class="add-to-cart px-5 py-2.5 rounded-full bg-primary-500 text-white font-body font-bold text-sm shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer border-none"
                     data-product-id={product.id}
                     data-product-name={product.name}
                     data-product-price={product.price}
                     data-product-image={product.image}
+                    disabled={product.stock === 0}
+                    style={product.stock === 0 ? 'opacity:0.5;cursor:not-allowed' : ''}
                   >
-                    Agregar <i class="fas fa-plus ml-1 text-xs"></i>
+                    {product.stock === 0 ? 'Sin stock' : 'Agregar'} <i class="fas fa-plus ml-1 text-xs"></i>
                   </button>
                 </div>
               </div>

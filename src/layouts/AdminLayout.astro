@@ -28,6 +28,10 @@ const { title = 'Panel Admin - MILO' } = Astro.props;
           <i class="fas fa-boxes w-5 text-center"></i>
           Productos
         </a>
+        <a href="/admin/categories" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-colors duration-200 {Astro.url.pathname.startsWith('/admin/categories') ? 'bg-primary-50 text-primary-600 font-semibold' : 'text-gray-600 hover:bg-gray-100'}">
+          <i class="fas fa-tags w-5 text-center"></i>
+          Categorías
+        </a>
         <a href="/" target="_blank" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 transition-colors duration-200">
           <i class="fas fa-external-link-alt w-5 text-center"></i>
           Ver sitio
@@ -40,8 +44,9 @@ const { title = 'Panel Admin - MILO' } = Astro.props;
         </button>
       </div>
     </nav>
-    <main class="flex-1 p-8">
+    <main class="flex-1 p-8 relative">
       <slot />
+      <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
     </main>
   </div>
 
@@ -50,6 +55,26 @@ const { title = 'Panel Admin - MILO' } = Astro.props;
       await fetch('/api/auth/logout', { method: 'POST' });
       window.location.href = '/admin/login';
     });
+
+    window.showToast = (message, type = 'success') => {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+      const colors = { success: 'bg-primary-400', error: 'bg-red-500', info: 'bg-gray-600' };
+      toast.className = `pointer-events-auto ${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-3 transition-all duration-300 translate-x-full opacity-0`;
+      toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i><span class="text-sm font-medium">${message}</span>`;
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-x-full', 'opacity-0');
+        toast.classList.add('translate-x-0', 'opacity-100');
+      });
+      setTimeout(() => {
+        toast.classList.remove('translate-x-0', 'opacity-100');
+        toast.classList.add('translate-x-full', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    };
   </script>
 </body>
 </html>
@@ -70,4 +95,8 @@ const { title = 'Panel Admin - MILO' } = Astro.props;
   .card {
     @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6;
   }
+  .translate-x-full { transform: translateX(100%); }
+  .translate-x-0 { transform: translateX(0); }
+  .opacity-0 { opacity: 0; }
+  .opacity-100 { opacity: 1; }
 </style>

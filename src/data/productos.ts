@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   image: string;
   categorySlug: string;
+  stock: number;
 }
 
 export interface Category {

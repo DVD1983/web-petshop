@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
 export const POST: APIRoute = async (context) => {
   try {
     const body = await context.request.json();
-    const { id, name, description, specs, price, image, categorySlug } = body;
+    const { id, name, description, specs, price, image, categorySlug, stock } = body;
 
     if (!id || !name || !price || !categorySlug) {
       return new Response(JSON.stringify({ error: 'Faltan campos requeridos (id, name, price, categorySlug)' }), {
@@ -37,6 +37,7 @@ export const POST: APIRoute = async (context) => {
       price: Number(price),
       image: image || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
       categorySlug,
+      stock: stock !== undefined ? Number(stock) : 0,
     });
 
     return new Response(JSON.stringify(product), {
