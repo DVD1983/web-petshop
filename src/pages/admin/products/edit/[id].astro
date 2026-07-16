@@ -24,19 +24,13 @@ if (!product) {
     <form id="productForm" class="flex flex-col gap-5">
       <input type="hidden" name="id" value={product.id} />
 
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label for="categorySlug" class="block text-sm font-semibold text-gray-600 mb-1.5">Categoría *</label>
-          <select id="categorySlug" name="categorySlug" required class="input-field">
-            {categories.map(cat => (
-              <option value={cat.slug} selected={cat.slug === product.categorySlug}>{cat.name}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label for="price" class="block text-sm font-semibold text-gray-600 mb-1.5">Precio ($) *</label>
-          <input type="number" id="price" name="price" required min="0" class="input-field" value={product.price} />
-        </div>
+      <div>
+        <label for="categorySlug" class="block text-sm font-semibold text-gray-600 mb-1.5">Categoría *</label>
+        <select id="categorySlug" name="categorySlug" required class="input-field">
+          {categories.map(cat => (
+            <option value={cat.slug} selected={cat.slug === product.categorySlug}>{cat.name}</option>
+          ))}
+        </select>
       </div>
 
       <div>
@@ -136,7 +130,7 @@ if (!product) {
         name: document.getElementById('name').value.trim(),
         description: document.getElementById('description').value.trim(),
         specs,
-        price: Number(document.getElementById('price').value),
+        price: 0,
         stock: Number(document.getElementById('stock').value) || 0,
         image: imageUrl.value.trim() || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
         categorySlug: document.getElementById('categorySlug').value,

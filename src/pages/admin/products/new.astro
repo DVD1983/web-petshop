@@ -48,15 +48,9 @@ const categories = await getAllCategories();
         <p class="text-xs text-gray-400 mt-1">Separadas por coma</p>
       </div>
 
-      <div class="grid grid-cols-3 gap-4">
-        <div>
-          <label for="price" class="block text-sm font-semibold text-gray-600 mb-1.5">Precio ($) *</label>
-          <input type="number" id="price" name="price" required min="0" class="input-field" placeholder="12500" />
-        </div>
-        <div>
-          <label for="stock" class="block text-sm font-semibold text-gray-600 mb-1.5">Stock</label>
-          <input type="number" id="stock" name="stock" min="0" class="input-field" placeholder="10" value="0" />
-        </div>
+      <div>
+        <label for="stock" class="block text-sm font-semibold text-gray-600 mb-1.5">Stock</label>
+        <input type="number" id="stock" name="stock" min="0" class="input-field" placeholder="10" value="0" />
       </div>
 
       <div>
@@ -137,7 +131,7 @@ const categories = await getAllCategories();
         name: document.getElementById('name').value.trim(),
         description: document.getElementById('description').value.trim(),
         specs,
-        price: Number(document.getElementById('price').value),
+        price: 0,
         stock: Number(document.getElementById('stock').value) || 0,
         image: imageUrl.value.trim() || 'https://placehold.co/400x400/ccc/ffffff?text=Producto',
         categorySlug: document.getElementById('categorySlug').value,

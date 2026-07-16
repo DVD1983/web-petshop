@@ -48,27 +48,21 @@ if (!category) {
                     </div>
                   </div>
                 )}
-                <div class="mt-auto flex items-center justify-between pt-3 border-t border-gray-50">
-                  <div>
-                    <span class="font-logo text-xl font-bold text-primary-500">{new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(product.price).replace('ARS', '$').trim()}</span>
-                    {product.stock !== undefined && product.stock < 5 && product.stock > 0 && (
-                      <p class="text-xs text-yellow-600 font-semibold mt-0.5">Últimas {product.stock} unidades</p>
-                    )}
-                    {product.stock !== undefined && product.stock === 0 && (
-                      <p class="text-xs text-red-500 font-semibold mt-0.5">Sin stock</p>
-                    )}
-                  </div>
-                  <button
-                    class="add-to-cart px-5 py-2.5 rounded-full bg-primary-500 text-white font-body font-bold text-sm shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer border-none"
-                    data-product-id={product.id}
-                    data-product-name={product.name}
-                    data-product-price={product.price}
-                    data-product-image={product.image}
-                    disabled={product.stock === 0}
-                    style={product.stock === 0 ? 'opacity:0.5;cursor:not-allowed' : ''}
+                <div class="mt-auto flex flex-col items-center gap-3 pt-3 border-t border-gray-50">
+                  {product.stock !== undefined && product.stock < 5 && product.stock > 0 && (
+                    <p class="text-xs text-yellow-600 font-semibold">Últimas {product.stock} unidades</p>
+                  )}
+                  {product.stock !== undefined && product.stock === 0 && (
+                    <p class="text-xs text-red-500 font-semibold">Sin stock</p>
+                  )}
+                  <a
+                    href={`https://wa.me/5491131628169?text=${encodeURIComponent('Hola, quiero consultar por: ' + product.name)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-green-500 text-white font-body font-bold text-sm shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:bg-green-600 no-underline"
                   >
-                    {product.stock === 0 ? 'Sin stock' : 'Agregar'} <i class="fas fa-plus ml-1 text-xs"></i>
-                  </button>
+                    <i class="fab fa-whatsapp text-base"></i> Consultar
+                  </a>
                 </div>
               </div>
             </div>
@@ -83,28 +77,3 @@ if (!category) {
   </section>
 </Layout>
 
-<script>
-  import { addToCart } from '../../scripts/cart';
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.productId;
-        const name = btn.dataset.productName;
-        const price = parseInt(btn.dataset.productPrice);
-        const image = btn.dataset.productImage;
-        addToCart(id, name, price, image);
-
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '✓ Agregado';
-        btn.classList.remove('bg-primary-500');
-        btn.classList.add('bg-green-500');
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.classList.remove('bg-green-500');
-          btn.classList.add('bg-primary-500');
-        }, 1500);
-      });
-    });
-  });
-</script>
