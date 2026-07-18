@@ -2,72 +2,32 @@
 const { id } = Astro.props;
 ---
 
-<section id={id} class="py-[80px] px-5 bg-gradient-to-b from-yellow-50 to-white text-center max-md:py-16 max-md:px-4">
+<section id={id} class="py-[70px] px-5 bg-gradient-to-b from-yellow-50 to-white text-center max-md:py-12 max-md:px-4">
   <div class="max-w-[1200px] mx-auto px-5">
-    <h2 class="text-center text-4xl font-black text-primary-500 mb-6 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
       Contacto
     </h2>
-    <p class="mb-10 text-gray-500 font-body text-base">Seguinos en redes o escribinos por WhatsApp</p>
-
+    <p class="mb-4 text-gray-500">Seguinos en redes o escribinos por WhatsApp</p>
     <a
       href="https://www.google.com/maps/place/Tienda+de+mascotas+Milo/@-34.7793152,-58.3127015,17z/data=!3m1!4b1!4m6!3m5!1s0x95a32d00091402c7:0xa40c05671327472b!8m2!3d-34.7793152!4d-58.3101266!16s%2Fg%2F11lv0732xx?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
       target="_blank"
       rel="noopener noreferrer"
-      class="mb-10 inline-flex items-center gap-2 text-gray-600 font-body font-semibold no-underline transition-colors duration-300 hover:text-primary-500"
+      class="mb-8 inline-block text-gray-700 font-medium no-underline transition-colors duration-300 hover:text-primary-500"
     >
-      <i class="fas fa-map-marker-alt text-primary-400"></i>
-      Calle 844, 2344, Solano
+      📍 Calle 844, 2344, Solano
     </a>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-12">
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <h3 class="font-body text-lg font-bold text-gray-800 mb-6">
-          <i class="fas fa-clock text-primary-400 mr-2"></i>Horarios
-        </h3>
-        <div class="space-y-3 text-left">
-          <div class="flex justify-between items-center py-2 border-b border-gray-50">
-            <span class="font-body text-sm font-semibold text-gray-600">Lunes a Viernes</span>
-            <span class="font-body text-sm font-bold text-primary-500">9:00 - 19:00</span>
-          </div>
-          <div class="flex justify-between items-center py-2 border-b border-gray-50">
-            <span class="font-body text-sm font-semibold text-gray-600">Sábados</span>
-            <span class="font-body text-sm font-bold text-primary-500">9:00 - 17:00</span>
-          </div>
-          <div class="flex justify-between items-center py-2">
-            <span class="font-body text-sm font-semibold text-gray-600">Domingos</span>
-            <span class="font-body text-sm font-bold text-gray-400">Cerrado</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-[300px]">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.1!2d-58.3127!3d-34.7793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDQ2JzQ1LjUiUyA1OMKwMTgnNDUuNyJX!5e0!3m2!1ses!2sar!4v1"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación MILO Pet Shop"
-        ></iframe>
-      </div>
-    </div>
-
-    <div class="flex justify-center gap-6 flex-wrap">
+    <div class="flex justify-center gap-8 flex-wrap max-md:flex-col max-md:items-center">
       <a
         href="https://www.instagram.com/milo.solano.petshop"
         target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-10 py-4 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-accent-100 via-pink-500 to-purple-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center no-underline"
+        class="inline-flex items-center gap-3.5 px-10 py-4.5 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-accent-100 via-pink-500 to-purple-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center"
       >
         <i class="fab fa-instagram"></i> Instagram
       </a>
       <a
         href="https://wa.me/5491131628169?text=hola%20quiero%20informacion%20asi%20puedo%20mimar%20a%20mi%20mascota.%20Gracias."
         target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-10 py-4 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-green-300 to-green-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center no-underline"
+        class="inline-flex items-center gap-3.5 px-10 py-4.5 rounded-[60px] font-body font-bold text-lg text-white bg-gradient-to-r from-green-300 to-green-500 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg max-md:w-full max-md:max-w-[300px] max-md:justify-center"
       >
         <i class="fab fa-whatsapp"></i> WhatsApp
       </a>

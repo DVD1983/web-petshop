@@ -1,92 +1,37 @@
 ---
 const { id } = Astro.props;
-
-const slides = [
-  {
-    src: '/images/carrousel/pet_shop_hero_banner.jpg',
-    alt: 'MILO Pet Shop - Tienda de mascotas en Solano, Buenos Aires',
-    title: 'MILO Pet Shop',
-    subtitle: 'Todo para tu mascota en Solano',
-  },
-  {
-    src: '/images/carrousel/premium_pet_banner_1.jpg',
-    alt: 'Alimentos premium para mascotas - Royal Canin, ProPlan, Old Prince',
-    title: 'Alimentos Premium',
-    subtitle: 'Para una vida saludable y feliz',
-  },
-  {
-    src: '/images/carrousel/premium_pet_banner_2.jpg',
-    alt: 'Las mejores marcas para perros y gatos en MILO Pet Shop',
-    title: 'Las Mejores Marcas',
-    subtitle: 'Para tu compañero de vida',
-  },
-  {
-    src: '/images/carrousel/premium_pet_banner_3.jpg',
-    alt: 'Cuidado y bienestar de mascotas - Productos de calidad',
-    title: 'Cuidamos a Tu Mascota',
-    subtitle: 'Como si fuera nuestra',
-  },
-  {
-    src: '/images/carrousel/old_prince_premium_banner.jpg',
-    alt: 'Old Prince - Nutrición super premium para gatos y perros',
-    title: 'Old Prince',
-    subtitle: 'Nutrición super premium para gatos',
-  },
-  {
-    src: '/images/carrousel/banner_10_marcas_premium.jpg',
-    alt: '10+ marcas premium: Royal Canin, Pedigree, Excellent, ProPlan',
-    title: '10+ Marcas Premium',
-    subtitle: 'Royal Canin, Pedigree, Excellent y más',
-  },
-  {
-    src: '/images/carrousel/image.jpg',
-    alt: 'Todo lo que necesitas para tu mascota en un solo lugar',
-    title: 'Encontrá Todo',
-    subtitle: 'En un solo lugar',
-  },
-  {
-    src: '/images/carrousel/image_2.jpg',
-    alt: 'MILO Pet Shop - Envíos a domicilio en Solano y alrededores',
-    title: 'Tu Pet Shop de Confianza',
-    subtitle: 'Envíos a domicilio',
-  },
-];
 ---
 
-<section id={id} class="py-[80px] px-5 bg-gradient-to-b from-primary-50 to-purple-50 max-md:py-16 max-md:px-4">
+<section id={id} class="py-[70px] px-5 bg-gradient-to-b from-primary-50 to-purple-50 max-md:py-12 max-md:px-4">
   <div class="max-w-[1200px] mx-auto px-5">
-    <h2 class="text-center text-4xl font-black text-primary-500 mb-4 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
       Galería
     </h2>
-    <p class="text-center font-body text-gray-500 mb-12 text-base">Conocé nuestras marcas y productos destacados</p>
-
-    <div class="relative max-w-[900px] mx-auto overflow-hidden rounded-2xl shadow-xl" id="carouselContainer">
+    <div class="relative max-w-[800px] mx-auto overflow-hidden rounded-xl shadow-lg" id="carouselContainer">
       <div class="flex transition-transform duration-500 ease-in-out" id="carouselTrack">
-        {slides.map((slide) => (
-          <div class="min-w-full relative group">
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              class="w-full h-[500px] object-cover max-md:h-[300px] max-sm:h-[240px]"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 max-md:p-5 text-white">
-              <h3 class="font-logo text-3xl font-bold mb-1 drop-shadow-lg max-md:text-xl">{slide.title}</h3>
-              <p class="font-body text-base font-semibold opacity-90 drop-shadow max-md:text-sm">{slide.subtitle}</p>
-            </div>
-          </div>
-        ))}
+        <div class="min-w-full">
+          <img src="/images/amigos.jpg" alt="Amigos" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&h=450&fit=crop" alt="Gato acurrucado" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=450&fit=crop" alt="Cachorro" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1534351450181-ea9f78427fe8?w=800&h=450&fit=crop" alt="Gato mirando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
+        <div class="min-w-full">
+          <img src="https://images.unsplash.com/photo-1583336663277-620dc1996580?w=800&h=450&fit=crop" alt="Perro jugando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
+        </div>
       </div>
-
-      <button class="absolute top-1/2 -translate-y-1/2 left-4 bg-white/80 backdrop-blur-sm border-none w-12 h-12 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-all duration-300 hover:bg-white hover:shadow-lg hover:scale-110 shadow-md max-md:w-10 max-md:h-10 max-md:text-base" id="prevBtn" aria-label="Anterior">
+      <button class="absolute top-1/2 -translate-y-1/2 left-3 bg-white/80 border-none w-11 h-11 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-colors hover:bg-white" id="prevBtn">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <button class="absolute top-1/2 -translate-y-1/2 right-4 bg-white/80 backdrop-blur-sm border-none w-12 h-12 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-all duration-300 hover:bg-white hover:shadow-lg hover:scale-110 shadow-md max-md:w-10 max-md:h-10 max-md:text-base" id="nextBtn" aria-label="Siguiente">
+      <button class="absolute top-1/2 -translate-y-1/2 right-3 bg-white/80 border-none w-11 h-11 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-colors hover:bg-white" id="nextBtn">
         <i class="fas fa-chevron-right"></i>
       </button>
-
-      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10" id="carouselDots"></div>
     </div>
+    <div class="flex justify-center gap-2.5 mt-4" id="carouselDots"></div>
   </div>
 </section>

@@ -1,42 +1,35 @@
 <nav
-  id="main-nav"
-  class="fixed top-0 left-0 w-full bg-amber-50/90 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.06)] z-50 px-6 py-2 flex items-center justify-between transition-all duration-300 max-md:px-4"
+  class="fixed top-0 left-0 w-full bg-amber-50 shadow-[0_2px_20px_rgba(0,0,0,0.06)] z-50 px-[30px] py-2 flex items-center justify-between max-md:px-4"
 >
-  <a href="#inicio" class="flex items-center gap-4 no-underline group">
+  <div class="flex items-center gap-4">
     <img
       src="/watermarked_img_15087738268608414710.jpg"
       alt="MILO Logo"
-      class="h-[120px] w-[120px] rounded-full object-cover border-[3px] border-primary-300 shadow-[0_4px_12px_rgba(79,195,247,0.3)] transition-transform duration-300 group-hover:scale-105 max-md:h-[80px] max-md:w-[80px]"
+      class="h-[130px] w-[130px] rounded-full object-cover border-[3px] border-primary-300 shadow-[0_4px_12px_rgba(79,195,247,0.3)] max-md:h-[90px] max-md:w-[90px]"
     />
     <span
-      class="font-logo text-4xl font-medium bg-gradient-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent transition-all duration-300 max-md:text-2xl"
+      class="font-logo text-4xl font-medium bg-gradient-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent max-md:text-2xl"
     >
       MILO
     </span>
-  </a>
+  </div>
 
-  <button
-    class="hidden max-md:flex flex-col gap-[5px] bg-none border-none cursor-pointer p-2 z-[60]"
-    id="menuToggle"
-    aria-label="Menú"
-  >
-    <span class="block w-6 h-[2.5px] bg-primary-500 rounded-full transition-all duration-300 origin-center" id="bar1"></span>
-    <span class="block w-6 h-[2.5px] bg-primary-500 rounded-full transition-all duration-300" id="bar2"></span>
-    <span class="block w-6 h-[2.5px] bg-primary-500 rounded-full transition-all duration-300 origin-center" id="bar3"></span>
+  <button class="hidden max-md:block bg-none border-none text-xl text-primary-500 cursor-pointer" id="menuToggle" aria-label="Menú">
+    <i class="fas fa-bars"></i>
   </button>
 
-  <ul class="flex gap-8 items-center list-none max-md:hidden max-md:flex-col max-md:absolute max-md:top-0 max-md:left-0 max-md:w-full max-md:h-screen max-md:bg-white/95 max-md:backdrop-blur-lg max-md:p-24 max-md:gap-8 max-md:text-center max-md:shadow-lg" id="navLinks">
-    <li><a href="#inicio" class="nav-link font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Inicio</a></li>
-    <li><a href="#nosotros" class="nav-link font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Nosotros</a></li>
-    <li><a href="#productos" class="nav-link font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Productos</a></li>
-    <li><a href="#galeria" class="nav-link font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Galería</a></li>
-    <li><a href="#contacto" class="nav-link font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Contacto</a></li>
-    <li>
-      <button id="nav-cart-btn" class="relative bg-transparent border-none text-primary-500 text-xl cursor-pointer transition-colors duration-300 hover:text-primary-300" aria-label="Carrito">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="nav-cart-badge" class="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
-      </button>
-    </li>
+  <ul class="flex gap-6 list-none max-md:hidden max-md:flex-col max-md:absolute max-md:top-[70px] max-md:left-0 max-md:w-full max-md:bg-white max-md:p-5 max-md:shadow-md max-md:text-center" id="navLinks">
+    <li><a href="#inicio" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Inicio</a></li>
+    <li><a href="#nosotros" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Nosotros</a></li>
+    <li><a href="#productos" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Productos</a></li>
+    <li><a href="#galeria" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Galería</a></li>
+    <li><a href="#contacto" class="font-body font-bold text-sm text-gray-500 no-underline transition-colors duration-300 hover:text-primary-500 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-primary-300 after:transition-[width] after:duration-300 hover:after:w-full">Contacto</a></li>
+      <li>
+        <button id="nav-cart-btn" class="relative bg-transparent border-none text-primary-500 text-xl cursor-pointer transition-colors duration-300 hover:text-primary-300" aria-label="Carrito">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="nav-cart-badge" class="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+        </button>
+      </li>
   </ul>
 </nav>
 
@@ -44,39 +37,15 @@
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   const navCartBtn = document.getElementById('nav-cart-btn');
-  const bar1 = document.getElementById('bar1');
-  const bar2 = document.getElementById('bar2');
-  const bar3 = document.getElementById('bar3');
-  const nav = document.getElementById('main-nav');
-  let menuOpen = false;
 
-  function toggleMenu() {
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-      navLinks?.classList.remove('max-md:hidden');
-      navLinks?.classList.add('max-md:flex');
-      bar1?.classList.add('rotate-45', 'translate-y-[7.5px]');
-      bar2?.classList.add('opacity-0');
-      bar3?.classList.add('-rotate-45', '-translate-y-[7.5px]');
-      document.body.style.overflow = 'hidden';
-    } else {
-      navLinks?.classList.add('max-md:hidden');
-      navLinks?.classList.remove('max-md:flex');
-      bar1?.classList.remove('rotate-45', 'translate-y-[7.5px]');
-      bar2?.classList.remove('opacity-0');
-      bar3?.classList.remove('-rotate-45', '-translate-y-[7.5px]');
-      document.body.style.overflow = '';
-    }
-  }
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('max-md:hidden');
+    });
 
-  if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
-  }
-
-  if (navLinks) {
     navLinks.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        if (menuOpen) toggleMenu();
+        navLinks.classList.add('max-md:hidden');
       });
     });
   }
@@ -86,21 +55,6 @@
       window.dispatchEvent(new CustomEvent('open-cart'));
     });
   }
-
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (nav) {
-      if (currentScroll > 50) {
-        nav.classList.add('shadow-lg');
-        nav.classList.remove('shadow-[0_2px_20px_rgba(0,0,0,0.06)]');
-      } else {
-        nav.classList.remove('shadow-lg');
-        nav.classList.add('shadow-[0_2px_20px_rgba(0,0,0,0.06)]');
-      }
-    }
-    lastScroll = currentScroll;
-  });
 
   window.addEventListener('cart-updated', () => {
     const badge = document.getElementById('nav-cart-badge');
