@@ -135,272 +135,272 @@
       "stock": 15
     },
     {
-      "id": "pelota-kong",
-      "name": "Pelota Kong Clásica",
-      "description": "Pelota de goma resistente ideal para juegos de buscar y atrapar. Su rebote impredecible la hace irresistible para los perros.",
+      "id": "pelota-interactiva",
+      "name": "Pelota Interactiva",
+      "description": "Pelota resistente con textura irregular que estimula el juego activo de tu mascota. Ideal para perros de todos los tamaños.",
       "specs": [
-        "Goma natural",
+        "Goma resistente",
         "Rebote irregular",
-        "Resistente",
-        "Flota"
-      ],
-      "price": 5200,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Kong",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "mordedor-dental",
-      "name": "Mordedor Dental Pollo",
-      "description": "Juguete mordedor texturizado que ayuda a limpiar los dientes mientras tu perro juega. Sabor a pollo que encanta.",
-      "specs": [
-        "Sabor pollo",
-        "Limpieza dental",
-        "Textura suave",
-        "Goma atóxica"
-      ],
-      "price": 3800,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Mordedor",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "juguete-cuerda",
-      "name": "Juguete Cuerda Nudos",
-      "description": "Juguete interactivo de cuerda con nudos para juegos de tira y afloja. Fortalece el vínculo con tu mascota.",
-      "specs": [
-        "Algodón",
-        "Nudos reforzados",
-        "30 cm",
-        "Lavable"
-      ],
-      "price": 2500,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Cuerda",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "pelota-led",
-      "name": "Pelota LED Saltarina",
-      "description": "Pelota luminosa con LED intermitente para jugar en la oscuridad. Rebota y brilla para diversión sin fin.",
-      "specs": [
-        "LED intermitente",
-        "Goma siliconada",
-        "Batería incluida",
-        "No tóxica"
-      ],
-      "price": 4100,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Pelota+LED",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "frisbee-volador",
-      "name": "Frisbee Volador Suave",
-      "description": "Disco volador de tela suave apto para interiores y exteriores. Ideal para juegos de buscar y atrapar.",
-      "specs": [
-        "Tela plegable",
-        "Diámetro 25cm",
-        "Lavable",
-        "No lastima"
-      ],
-      "price": 3200,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Frisbee",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "raton-gato",
-      "name": "Ratón Juguete para Gato",
-      "description": "Juguete con forma de ratón que estimula el instinto cazador de tu gato. Incluye hierba gatera.",
-      "specs": [
-        "Peluche suave",
-        "Hierba gatera",
-        "Sonido interior",
-        "8 cm"
-      ],
-      "price": 1900,
-      "image": "https://placehold.co/400x400/F8BBD0/ffffff?text=Raton",
-      "categorySlug": "juguetes",
-      "stock": 20
-    },
-    {
-      "id": "correa-ajustable",
-      "name": "Correa Ajustable 1.5m",
-      "description": "Correa de nylon resistente con gancho giratorio y protector de mano. Ajustable y cómoda para pasear.",
-      "specs": [
-        "Nylon resistente",
-        "1.5 metros",
-        "Gancho giratorio",
-        "Protector de mano"
+        "No tóxica",
+        "Para perros"
       ],
       "price": 3500,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Correa",
-      "categorySlug": "accesorios",
-      "stock": 18
+      "image": "/images/imagenes/juguetes/pelota_interactiva_jpg.jpg",
+      "categorySlug": "juguetes",
+      "stock": 20
     },
     {
-      "id": "collar-reflectivo",
-      "name": "Collar Reflectivo Talla M",
-      "description": "Collar de seguridad con banda reflectiva para paseos nocturnos. Hebilla de liberación rápida.",
+      "id": "pelota-soga",
+      "name": "Pelota de Soga",
+      "description": "Pelota de soga tejida que combina mordido y juego de tirar. Ideal para juegos de tira y afloja con tu perro.",
       "specs": [
-        "Reflectivo",
-        "Talla M (35-45cm)",
-        "Liberación rápida",
-        "Nylon"
+        "Soga resistente",
+        "Tejido reforzado",
+        "Lavable",
+        "Para perros"
       ],
       "price": 2800,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Collar",
-      "categorySlug": "accesorios",
-      "stock": 18
+      "image": "/images/imagenes/juguetes/pelota_soga_jpg.jpg",
+      "categorySlug": "juguetes",
+      "stock": 20
     },
     {
-      "id": "comedero-doble",
-      "name": "Comedero Doble Acero",
-      "description": "Comedero doble de acero inoxidable con base antideslizante. Dos compartimentos para comida y agua.",
+      "id": "pollo-juguete",
+      "name": "Juguete Pollo",
+      "description": "Juguete con forma de pollo de peluche suave con sonido integrado. Estimula el instinto cazador y el juego activo.",
       "specs": [
-        "Acero inoxidable",
-        "Base antideslizante",
-        "2 compartimentos",
-        "Capacidad 500ml c/u"
+        "Peluche suave",
+        "Sonido interior",
+        "Forma de pollo",
+        "Para perros y gatos"
       ],
-      "price": 6200,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Comedero",
-      "categorySlug": "accesorios",
-      "stock": 18
+      "price": 2200,
+      "image": "/images/imagenes/juguetes/pollo_juguete_jpg.jpg",
+      "categorySlug": "juguetes",
+      "stock": 20
     },
     {
-      "id": "bebedero-automatico",
-      "name": "Bebedero Automático 2L",
-      "description": "Bebedero con depósito de 2 litros que suministra agua fresca de forma continua. Filtro de carbón incluido.",
+      "id": "sandwich-juguete",
+      "name": "Juguete Sándwich",
+      "description": "Juguete divertido con forma de sándwich, de textura suave y colores llamativos. Perfecto para juego y mordido ligero.",
       "specs": [
-        "2 litros",
-        "Flujo continuo",
-        "Filtro carbón",
-        "Silencioso"
-      ],
-      "price": 8900,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Bebedero",
-      "categorySlug": "accesorios",
-      "stock": 18
-    },
-    {
-      "id": "arnes-antitiro",
-      "name": "Arnés Antitiro Talla L",
-      "description": "Arnés de control con anilla frontal para perros que tiran de la correa. Acolchado y ajustable.",
-      "specs": [
-        "Talla L (50-70cm)",
-        "Antitiro",
-        "Acolchado",
-        "Anilla frontal"
-      ],
-      "price": 5400,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Arnes",
-      "categorySlug": "accesorios",
-      "stock": 18
-    },
-    {
-      "id": "pretal-acolchado",
-      "name": "Pretal Acolchado",
-      "description": "Pretal acolchado de tela suave para paseos diarios. Distribuye la presión de forma uniforme.",
-      "specs": [
-        "Tela acolchada",
-        "Distribuye presión",
-        "Ajustable",
-        "Varios colores"
-      ],
-      "price": 4700,
-      "image": "https://placehold.co/400x400/E1BEE7/ffffff?text=Pretal",
-      "categorySlug": "accesorios",
-      "stock": 18
-    },
-    {
-      "id": "shampoo-neutro",
-      "name": "Shampoo Neutro x500ml",
-      "description": "Shampoo suave con pH balanceado para perros y gatos. Limpia sin irritar la piel. Ideal para baños frecuentes.",
-      "specs": [
-        "500 ml",
-        "pH neutro",
-        "Sin parabenos",
-        "Aroma suave"
-      ],
-      "price": 3200,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Shampoo",
-      "categorySlug": "higiene",
-      "stock": 25
-    },
-    {
-      "id": "cepillo-cerdas",
-      "name": "Cepillo Cerdas Suaves",
-      "description": "Cepillo de cerdas suaves con mango ergonómico para eliminar el pelo suelto y desenredar sin lastimar.",
-      "specs": [
-        "Cerdas suaves",
-        "Mango ergonómico",
-        "Antiestático",
-        "Limpieza profunda"
-      ],
-      "price": 2100,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Cepillo",
-      "categorySlug": "higiene",
-      "stock": 25
-    },
-    {
-      "id": "perfume-desodorante",
-      "name": "Perfume Desodorante x250ml",
-      "description": "Perfume desodorante en spray para eliminar olores entre baños. Fórmula sin alcohol con aroma duradero.",
-      "specs": [
-        "250 ml",
-        "Sin alcohol",
-        "Elimina olores",
-        "Aroma duradero"
-      ],
-      "price": 2800,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Perfume",
-      "categorySlug": "higiene",
-      "stock": 25
-    },
-    {
-      "id": "cortaunas-profesional",
-      "name": "Cortaúñas Profesional",
-      "description": "Cortaúñas de acero inoxidable con seguro de seguridad y mango antideslizante. Para perros y gatos.",
-      "specs": [
-        "Acero inoxidable",
-        "Seguro seguridad",
-        "Mango antideslizante",
-        "Talla única"
+        "Textura suave",
+        "Forma de sándwich",
+        "No tóxica",
+        "Para perros pequeños"
       ],
       "price": 1900,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Cortaunas",
+      "image": "/images/imagenes/juguetes/sandwich_juguete_jpg.jpg",
+      "categorySlug": "juguetes",
+      "stock": 20
+    },
+    {
+      "id": "cat-toys-set",
+      "name": "Set de Juguetes para Gato",
+      "description": "Set de juguetes variados para gatos con plumas, pelotas y ratones. Estimula la caza y el juego independiente.",
+      "specs": [
+        "Set variado",
+        "Plumas y pelotas",
+        "Estimula la caza",
+        "Para gatos"
+      ],
+      "price": 3100,
+      "image": "/images/imagenes/juguetes/cat_toys_jpg.jpg",
+      "categorySlug": "juguetes",
+      "stock": 20
+    },
+    {
+      "id": "doughnut-bowl",
+      "name": "Comedero Dona",
+      "description": "Comedero con diseño de dona que dificulta la ingesta rápida, ideal para perros que comen muy aprisa. Fácil de limpiar.",
+      "specs": [
+        "Diseño antirrápido",
+        "Plástico resistente",
+        "Fácil limpieza",
+        "Capacidad 350ml"
+      ],
+      "price": 4200,
+      "image": "/images/imagenes/accesorios/doughnut_bowl_jpg.jpg",
+      "categorySlug": "accesorios",
+      "stock": 18
+    },
+    {
+      "id": "modapet-bebedero",
+      "name": "Bebedero ModaPet",
+      "description": "Bebedero portátil con depósito de agua integrado. Ideal para paseos y viajes con tu mascota. Dispensa agua con un solo click.",
+      "specs": [
+        "Portátil",
+        "Dispensa agua",
+        "Filtro integrado",
+        "Capacidad 500ml"
+      ],
+      "price": 5600,
+      "image": "/images/imagenes/accesorios/modapet_bebedero_jpg.jpg",
+      "categorySlug": "accesorios",
+      "stock": 18
+    },
+    {
+      "id": "modapet-botella-portatil",
+      "name": "Botella Portátil ModaPet",
+      "description": "Botella de agua portátil con bebedero integrado para mascotas. Diseño ergonómico que facilita el acceso al agua en paseos.",
+      "specs": [
+        "Botella portátil",
+        "Bebedero integrado",
+        "BPA free",
+        "Capacidad 600ml"
+      ],
+      "price": 4800,
+      "image": "/images/imagenes/accesorios/modapet_botella_portatil_jpg.jpg",
+      "categorySlug": "accesorios",
+      "stock": 18
+    },
+    {
+      "id": "modapet-doble",
+      "name": "Comedero Doble ModaPet",
+      "description": "Comedero doble con dos compartimentos para alimento y agua. Base antideslizante y diseño elegante para tu hogar.",
+      "specs": [
+        "2 compartimentos",
+        "Base antideslizante",
+        "Plástico resistente",
+        "Fácil limpieza"
+      ],
+      "price": 5200,
+      "image": "/images/imagenes/accesorios/modapet_doble_jpg.jpg",
+      "categorySlug": "accesorios",
+      "stock": 18
+    },
+    {
+      "id": "modapet-gatito",
+      "name": "Rascador ModaPet Gato",
+      "description": "Rascador y poste para gatos con base estable y cuerda de cáñamo. Estimula el rascado natural y protege tus muebles.",
+      "specs": [
+        "Cuerda de cáñamo",
+        "Base estable",
+        "Altura 40cm",
+        "Para gatos"
+      ],
+      "price": 6900,
+      "image": "/images/imagenes/accesorios/modapet_gatito_jpg.jpg",
+      "categorySlug": "accesorios",
+      "stock": 18
+    },
+    {
+      "id": "babs-espuma-seca",
+      "name": "Espuma Seca Babs",
+      "description": "Espuma de limpieza seca para baños sin agua. Limpia y desodoriza el pelo de tu mascota entre baños de forma práctica.",
+      "specs": [
+        "Baño sin agua",
+        "Limpia y desodoriza",
+        "Práctico y rápido",
+        "Para perros y gatos"
+      ],
+      "price": 3100,
+      "image": "/images/imagenes/limpieza/babs_espuma_seca_jpg.jpg",
       "categorySlug": "higiene",
       "stock": 25
     },
     {
-      "id": "toallitas-humedas",
-      "name": "Toallitas Húmedas x50u",
-      "description": "Toallitas húmedas para limpieza diaria de patas y cuerpo. Con aloe vera y vitamina E.",
+      "id": "cepillo-doble-madera",
+      "name": "Cepillo Doble Cabeza de Madera",
+      "description": "Cepillo de doble cabeza con mango de madera natural. Un lado para cepillar y el otro para eliminar pelo suelto.",
       "specs": [
-        "50 unidades",
-        "Aloe vera",
-        "Vitamina E",
-        "Biodegradables"
+        "Doble cabeza",
+        "Mango de madera",
+        "Cerdas suaves",
+        "Antiestático"
       ],
       "price": 2400,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Toallitas",
+      "image": "/images/imagenes/limpieza/cepillo_doble_madera_jpg.jpg",
       "categorySlug": "higiene",
       "stock": 25
     },
     {
-      "id": "cepillo-dental-set",
-      "name": "Cepillo Dental Set",
-      "description": "Kit de limpieza dental con cepillo de doble cabezal y pasta dental sabor pollo. Previene el sarro.",
+      "id": "curabigen-plata",
+      "name": "Curabigen Plata",
+      "description": "Spray cicatrizante con plata para heridas y cortes en mascotas. Acelera la regeneración de tejidos y previene infecciones.",
       "specs": [
-        "Cepillo doble",
-        "Pasta sabor pollo",
-        "Previene sarro",
-        "Fácil uso"
+        "Spray tópico",
+        "Con plata",
+        "Cicatrizante",
+        "Para perros y gatos"
       ],
-      "price": 3600,
-      "image": "https://placehold.co/400x400/B2EBF2/ffffff?text=Dental",
+      "price": 4500,
+      "image": "/images/imagenes/limpieza/curabigen_plata_ecommerce.jpg",
+      "categorySlug": "higiene",
+      "stock": 25
+    },
+    {
+      "id": "dermosedan-champu",
+      "name": "Shampoo Dermosedán",
+      "description": "Shampoo dermatológico para pieles sensibles. Calma irritaciones, reduce la caspa y mantiene el pelo suave y brillante.",
+      "specs": [
+        "Dermatológico",
+        "Para pieles sensibles",
+        "Reduce caspa",
+        "Pelo brillante"
+      ],
+      "price": 5200,
+      "image": "/images/imagenes/limpieza/dermosedan_champu_jpg.jpg",
+      "categorySlug": "higiene",
+      "stock": 25
+    },
+    {
+      "id": "formula-macdonald",
+      "name": "Fórmula Macdonald",
+      "description": "Fórmula líquida de limpieza dental para mascotas. Reduce la placa bacteriana y previene el mal aliento con uso regular.",
+      "specs": [
+        "Líquido dental",
+        "Reduce placa",
+        "Previene mal aliento",
+        "Uso diario"
+      ],
+      "price": 3800,
+      "image": "/images/imagenes/limpieza/formula_macdonald_jpg.jpg",
+      "categorySlug": "higiene",
+      "stock": 25
+    },
+    {
+      "id": "limpia-lagrimas",
+      "name": "Limpia Lagrimas",
+      "description": "Solución para limpiar la zona de los ojos de tu mascota. Elimina las manchas de lágrimas y previene la acumulación de secreciones.",
+      "specs": [
+        "Para zona ocular",
+        "Elimina manchas",
+        "Suave y seguro",
+        "Para perros y gatos"
+      ],
+      "price": 2600,
+      "image": "/images/imagenes/limpieza/limpia_lagrimas_jpg.jpg",
+      "categorySlug": "higiene",
+      "stock": 25
+    },
+    {
+      "id": "modapet-cepillo-bano",
+      "name": "Cepillo de Baño ModaPet",
+      "description": "Cepillo de baño con cerdas flexibles que masajea la piel mientras limpia el pelo. Elimina pelo suelto y suciedad eficazmente.",
+      "specs": [
+        "Cerdas flexibles",
+        "Masajea la piel",
+        "Ergonómico",
+        "Para perros y gatos"
+      ],
+      "price": 2200,
+      "image": "/images/imagenes/limpieza/modapet_cepillo_bano_jpg.jpg",
+      "categorySlug": "higiene",
+      "stock": 25
+    },
+    {
+      "id": "no-va-repelente",
+      "name": "Repelente No+Va",
+      "description": "Repelente natural para mascotas que aleja pulgas, garrapatas y mosquitos. Fórmula segura y sin químicos agresivos.",
+      "specs": [
+        "Repelente natural",
+        "Pulgas y garrapatas",
+        "Sin químicos agresivos",
+        "Seguro"
+      ],
+      "price": 3400,
+      "image": "/images/imagenes/limpieza/no_va_repelente_jpg.jpg",
       "categorySlug": "higiene",
       "stock": 25
     },
