@@ -1,5 +1,16 @@
 ---
 const { id } = Astro.props;
+
+const slides = [
+  { src: '/images/carrousel/pet_shop_hero_banner.jpg', alt: 'MILO Pet Shop - Tienda de mascotas en Solano', title: 'MILO Pet Shop', subtitle: 'Todo para tu mascota en Solano' },
+  { src: '/images/carrousel/premium_pet_banner_1.jpg', alt: 'Alimentos premium para mascotas', title: 'Alimentos Premium', subtitle: 'Para una vida saludable y feliz' },
+  { src: '/images/carrousel/premium_pet_banner_2.jpg', alt: 'Las mejores marcas para perros y gatos', title: 'Las Mejores Marcas', subtitle: 'Para tu compañero de vida' },
+  { src: '/images/carrousel/premium_pet_banner_3.jpg', alt: 'Cuidado y bienestar de mascotas', title: 'Cuidamos a Tu Mascota', subtitle: 'Como si fuera nuestra' },
+  { src: '/images/carrousel/old_prince_premium_banner.jpg', alt: 'Old Prince - Nutrición super premium para gatos', title: 'Old Prince', subtitle: 'Nutrición super premium para gatos' },
+  { src: '/images/carrousel/banner_10_marcas_premium.jpg', alt: '10+ marcas premium en MILO Pet Shop', title: '10+ Marcas Premium', subtitle: 'Royal Canin, Pedigree, Excellent y más' },
+  { src: '/images/carrousel/image.jpg', alt: 'Todo lo que necesitas para tu mascota', title: 'Encontrá Todo', subtitle: 'En un solo lugar' },
+  { src: '/images/carrousel/image_2.jpg', alt: 'Envíos a domicilio en Solano', title: 'Tu Pet Shop de Confianza', subtitle: 'Envíos a domicilio' },
+];
 ---
 
 <section id={id} class="py-[70px] px-5 bg-gradient-to-b from-primary-50 to-purple-50 max-md:py-12 max-md:px-4">
@@ -7,23 +18,18 @@ const { id } = Astro.props;
     <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
       Galería
     </h2>
-    <div class="relative max-w-[800px] mx-auto overflow-hidden rounded-xl shadow-lg" id="carouselContainer">
+    <div class="relative max-w-[850px] mx-auto overflow-hidden rounded-xl shadow-lg" id="carouselContainer">
       <div class="flex transition-transform duration-500 ease-in-out" id="carouselTrack">
-        <div class="min-w-full">
-          <img src="/images/amigos.jpg" alt="Amigos" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
-        </div>
-        <div class="min-w-full">
-          <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&h=450&fit=crop" alt="Gato acurrucado" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
-        </div>
-        <div class="min-w-full">
-          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=450&fit=crop" alt="Cachorro" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
-        </div>
-        <div class="min-w-full">
-          <img src="https://images.unsplash.com/photo-1534351450181-ea9f78427fe8?w=800&h=450&fit=crop" alt="Gato mirando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
-        </div>
-        <div class="min-w-full">
-          <img src="https://images.unsplash.com/photo-1583336663277-620dc1996580?w=800&h=450&fit=crop" alt="Perro jugando" class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" />
-        </div>
+        {slides.map((slide) => (
+          <div class="min-w-full relative">
+            <img src={slide.src} alt={slide.alt} class="w-full h-[450px] object-cover max-md:h-[280px] max-sm:h-[220px]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p class="font-logo text-2xl font-bold drop-shadow-lg max-md:text-lg">{slide.title}</p>
+              <p class="font-body text-sm font-semibold opacity-90 drop-shadow max-md:text-xs">{slide.subtitle}</p>
+            </div>
+          </div>
+        ))}
       </div>
       <button class="absolute top-1/2 -translate-y-1/2 left-3 bg-white/80 border-none w-11 h-11 rounded-full text-lg text-primary-500 cursor-pointer z-10 transition-colors hover:bg-white" id="prevBtn">
         <i class="fas fa-chevron-left"></i>
