@@ -35,6 +35,8 @@ function writeJsonFile(data: StoreData): void {
 
 async function seedKvIfEmpty(): Promise<StoreData> {
   try {
+    const existing = await kv.get<StoreData>('products');
+    if (existing) return existing;
     await kv.set('products', seedData);
     return seedData as StoreData;
   } catch {
