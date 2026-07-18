@@ -7,8 +7,8 @@ export interface Props {
   image?: string;
 }
 
-const { title = 'MILO - Pet Shop', description = 'En MILO amamos a las mascotas tanto como vos. Encontrá alimentos, juguetes, accesorios, higiene, camas y snacks para perros y gatos. ¡Hacé tu pedido por WhatsApp!' } = Astro.props;
-const siteUrl = 'https://milo-petshop.vercel.app';
+const { title = 'MILO - Pet Shop | Alimentos, Juguetes y Accesorios para Mascotas en Solano', description = 'En MILO amamos a las mascotas tanto como vos. Encontrá alimentos, juguetes, accesorios, higiene, camas y snacks para perros y gatos. ¡Hacé tu pedido por WhatsApp!' } = Astro.props;
+const siteUrl = 'https://milopetshop.com';
 const ogImage = '/images/milo-alimentos.jpg';
 ---
 
@@ -19,9 +19,11 @@ const ogImage = '/images/milo-alimentos.jpg';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="pet shop, mascotas, perros, gatos, alimentos, accesorios, juguetes, MILO, Solano" />
+    <meta name="keywords" content="pet shop, mascotas, perros, gatos, alimentos, accesorios, juguetes, MILO, Solano, petshop, tienda de mascotas" />
     <meta name="author" content="MILO Pet Shop" />
     <meta name="theme-color" content="#4FC3F7" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -29,6 +31,7 @@ const ogImage = '/images/milo-alimentos.jpg';
     <meta property="og:url" content={siteUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="MILO Pet Shop" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -39,14 +42,33 @@ const ogImage = '/images/milo-alimentos.jpg';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Outfit:wght@300;400;600;700;900&family=Quicksand:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Outfit:wght@300;400;600;700;900&family=Quicksand:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" async></script>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "PetStore",
+      "name": "MILO Pet Shop",
+      "description": description,
+      "url": siteUrl,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 844, 2344",
+        "addressLocality": "Solano",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "telephone": "+54 11 3162-8169",
+      "openingHours": ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
+      "sameAs": [
+        "https://www.instagram.com/milo.solano.petshop"
+      ]
+    })} />
   </head>
   <body class="font-body text-gray-700 scroll-smooth">
     <slot />

@@ -2,8 +2,19 @@
   href="https://wa.me/5491131628169?text=hola%20quiero%20informacion%20asi%20puedo%20mimar%20a%20mi%20mascota.%20Gracias."
   target="_blank"
   rel="noopener noreferrer"
-  class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-green-300 to-green-500 text-white font-body font-bold text-sm shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl max-md:px-4 max-md:py-3"
+  class="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-5 py-3.5 rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white font-body font-bold text-sm shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:from-green-500 hover:to-green-600 max-md:px-4 max-md:py-3 no-underline animate-bounce-slow"
+  aria-label="Contactar por WhatsApp"
 >
   <i class="fab fa-whatsapp text-xl"></i>
   <span class="max-md:hidden">Hacé tu pedido — Envíos a domicilio</span>
 </a>
+
+<style>
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .animate-bounce-slow {
+    animation: bounceSlow 3s ease-in-out infinite;
+  }
+</style>

@@ -7,5 +7,5 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   integrations: [tailwind(), sitemap()],
-  site: 'https://web-petshop-one.vercel.app',
+  site: 'https://milopetshop.com',
 });

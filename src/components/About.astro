@@ -1,14 +1,33 @@
 ---
 const { id } = Astro.props;
+
+const features = [
+  { icon: 'fas fa-heart', title: 'Amor por las mascotas', desc: 'Cada producto es seleccionado con cariño para el bienestar de tu compañero.' },
+  { icon: 'fas fa-award', title: 'Marcas de calidad', desc: 'Trabajamos con las mejores marcas para garantizar la satisfacción.' },
+  { icon: 'fas fa-truck', title: 'Envíos a domicilio', desc: 'Recibí tu pedido en la puerta de tu casa en Solano y alrededores.' },
+  { icon: 'fas fa-comments', title: 'Asesoramiento personalizado', desc: 'Te ayudamos a elegir lo mejor para las necesidades de tu mascota.' },
+];
 ---
 
-<section id={id} class="py-[70px] px-5 bg-gradient-to-b from-accent-50 to-primary-50 max-md:py-12 max-md:px-4">
+<section id={id} class="py-[80px] px-5 bg-gradient-to-b from-accent-50 to-primary-50 max-md:py-16 max-md:px-4">
   <div class="max-w-[1200px] mx-auto px-5">
-    <h2 class="text-center text-4xl font-black text-primary-500 mb-10 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
+    <h2 class="text-center text-4xl font-black text-primary-500 mb-6 tracking-wide max-md:text-2xl after:block after:w-[70px] after:h-1 after:bg-gradient-to-r after:from-accent-100 after:via-primary-300 after:to-accent-200 after:mx-auto after:mt-3 after:rounded-sm">
       Sobre Nosotros
     </h2>
-    <p class="max-w-[750px] mx-auto text-center font-body text-lg font-medium leading-[1.9] text-gray-600">
-      En <strong>MILO</strong> amamos a las mascotas tanto como vos. Somos un pet shop dedicado a ofrecer productos de calidad para el bienestar y la felicidad de tus compañeros de vida. Trabajamos con las mejores marcas y brindamos atención personalizada porque sabemos que tu mascota es parte de la familia.
+    <p class="max-w-[750px] mx-auto text-center font-body text-lg font-medium leading-[1.9] text-gray-600 mb-14">
+      En <strong>MILO</strong> amamos a las mascotas tanto como vos. Somos un pet shop dedicado a ofrecer productos de calidad para el bienestar y la felicidad de tus compañeros de vida.
     </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {features.map((f) => (
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-7 text-center shadow-sm border border-white/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-white group">
+          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            <i class={`${f.icon} text-2xl text-primary-400`}></i>
+          </div>
+          <h3 class="font-body text-base font-bold text-gray-800 mb-2">{f.title}</h3>
+          <p class="font-body text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
