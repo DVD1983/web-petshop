@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const { title = 'MILO - Pet Shop', description = 'En MILO amamos a las mascotas tanto como vos. Encontrá alimentos, juguetes, accesorios, higiene, camas y snacks para perros y gatos. ¡Hacé tu pedido por WhatsApp!' } = Astro.props;
-const siteUrl = 'https://milo-petshop.vercel.app';
+const siteUrl = 'https://www.milopetshop.com';
 const ogImage = '/images/milo-alimentos.jpg';
 ---
 
@@ -22,6 +22,8 @@ const ogImage = '/images/milo-alimentos.jpg';
     <meta name="keywords" content="pet shop, mascotas, perros, gatos, alimentos, accesorios, juguetes, MILO, Solano" />
     <meta name="author" content="MILO Pet Shop" />
     <meta name="theme-color" content="#4FC3F7" />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
