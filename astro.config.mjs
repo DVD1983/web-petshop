@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap({
+    filter: (page) => !page.includes('/admin'),
+  })],
   site: 'https://www.milopetshop.com',
 });
